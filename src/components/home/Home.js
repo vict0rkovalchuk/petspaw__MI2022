@@ -3,7 +3,7 @@ import logo from '../../icons/logo.svg';
 import voting from '../../images/cards/vote-table.png';
 import breeds from '../../images/cards/pet-breeds.png';
 import gallery from '../../images/cards/images-search.png';
-import girlWithPet from '../../images/girl-and-pet-main.png';
+import girlWithPet from '../../images/girl-and-pet.png';
 
 function Home() {
   return (
@@ -43,9 +43,8 @@ function Home() {
           </div>
         </div>
 
-        <div className="home__image">
-          <img src={girlWithPet} alt="girl-and-pet" />
-        </div>
+        <div className="home__image"></div>
+        <img src={girlWithPet} alt="girl-and-pet" />
       </div>
     </div>
   );

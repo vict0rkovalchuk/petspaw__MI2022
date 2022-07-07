@@ -1,6 +1,7 @@
 .home {
   display: flex;
   justify-content: space-between;
+  position: relative;
   &__menu {
     margin: 30px 72px 0 147px;
   }
@@ -85,11 +86,16 @@
     color: #1d1d1d;
   }
   &__image {
-    height: 100vh;
-    display: flex;
-    // justify-content: center;
-    // img {
-    //   height: 100%;
-    // }
+    width: 680px;
+    height: 840px;
+    background: #fbe0dc;
+    border-radius: 20px;
+    margin: 30px 30px 30px 0;
+  }
+  [alt='girl-and-pet'] {
+    position: absolute;
+    width: 775px;
+    top: 0;
+    right: 0;
   }
 }
