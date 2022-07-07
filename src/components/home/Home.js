@@ -22,22 +22,22 @@ function Home() {
             <div className="home__subtitle">Lets start using The Cat API</div>
             <div className="home__cards-items">
               <div className="home__card-item">
-                <div className="home__card-image voting">
-                  <img src={voting} className="" alt="vote-table" />
+                <div className="home__card-image card-image voting">
+                  <img src={voting} alt="vote-table" />
                 </div>
-                <button className="home__card-button">Voting</button>
+                <button className="home__card-button card-btn">Voting</button>
               </div>
               <div className="home__card-item">
-                <div className="home__card-image breeds">
-                  <img src={breeds} className="" alt="vote-table" />
+                <div className="home__card-image card-image breeds">
+                  <img src={breeds} alt="vote-table" />
                 </div>
-                <button className="home__card-button">BREEDS</button>
+                <button className="home__card-button card-btn">BREEDS</button>
               </div>
               <div className="home__card-item">
-                <div className="home__card-image gallery">
-                  <img src={gallery} className="" alt="vote-table" />
+                <div className="home__card-image card-image gallery">
+                  <img src={gallery} alt="vote-table" />
                 </div>
-                <button className="home__card-button">GALLERY</button>
+                <button className="home__card-button card-btn">GALLERY</button>
               </div>
             </div>
           </div>
