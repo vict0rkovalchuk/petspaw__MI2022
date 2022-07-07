@@ -1,0 +1,54 @@
+import './Home.scss';
+import logo from '../../icons/logo.svg';
+import voting from '../../images/cards/vote-table.png';
+import breeds from '../../images/cards/pet-breeds.png';
+import gallery from '../../images/cards/images-search.png';
+import girlWithPet from '../../images/girl-and-pet-main.png';
+
+function Home() {
+  return (
+    <div className="container">
+      <div id="home" className="home">
+        <div className="home__menu">
+          <div className="home__logo">
+            <img src={logo} alt="petspaw logo" />
+          </div>
+
+          <div className="home__cards">
+            <div className="home__title">Hi intern!</div>
+            <div className="home__greeting">
+              Welcome to MI 2022 Front-end test
+            </div>
+            <div className="home__subtitle">Lets start using The Cat API</div>
+            <div className="home__cards-items">
+              <div className="home__card-item">
+                <div className="home__card-image voting">
+                  <img src={voting} className="" alt="vote-table" />
+                </div>
+                <button className="home__card-button">Voting</button>
+              </div>
+              <div className="home__card-item">
+                <div className="home__card-image breeds">
+                  <img src={breeds} className="" alt="vote-table" />
+                </div>
+                <button className="home__card-button">BREEDS</button>
+              </div>
+              <div className="home__card-item">
+                <div className="home__card-image gallery">
+                  <img src={gallery} className="" alt="vote-table" />
+                </div>
+                <button className="home__card-button">GALLERY</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="home__image">
+          <img src={girlWithPet} alt="girl-and-pet" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Home;
