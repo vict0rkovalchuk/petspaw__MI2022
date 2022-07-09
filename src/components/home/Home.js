@@ -6,6 +6,7 @@ import gallery from '../../images/cards/images-search.png';
 import girlWithPet from '../../images/girl-and-pet-main.png';
 
 import Voting from '../voting/Voting';
+import Breeds from '../breeds/Breeds';
 
 function Home() {
   return (
@@ -45,7 +46,8 @@ function Home() {
       </div>
 
       {/* <View /> */}
-      <Voting />
+      {/* <Voting /> */}
+      <Breeds />
     </div>
   );
 }

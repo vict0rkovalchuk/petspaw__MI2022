@@ -1,6 +1,7 @@
 import './Voting.scss';
 
 import Searchbox from '../searchbox/Searchbox';
+
 import cat from './images/cat.jpg';
 import back from './icons/left.svg';
 import gladsmile from './icons/gladsmile.svg';
