@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/vict0rkovalchuk/petspaw__MI2022/static/css/main.36a4381f.css",
+    "main.js": "/vict0rkovalchuk/petspaw__MI2022/static/js/main.e2c63206.js",
+    "static/media/girl-and-pet-main.png": "/vict0rkovalchuk/petspaw__MI2022/static/media/girl-and-pet-main.1927e13f60069098098c.png",
+    "static/media/cat.jpg": "/vict0rkovalchuk/petspaw__MI2022/static/media/cat.463693d1d65f22b384fe.jpg",
+    "static/media/images-search.png": "/vict0rkovalchuk/petspaw__MI2022/static/media/images-search.60d7c8a49dbcbe53815f.png",
+    "static/media/vote-table.png": "/vict0rkovalchuk/petspaw__MI2022/static/media/vote-table.d90057a5ea03ad720a69.png",
+    "static/media/pet-breeds.png": "/vict0rkovalchuk/petspaw__MI2022/static/media/pet-breeds.5ee8e4ca61e5fe0a9ab8.png",
+    "static/media/logo.svg": "/vict0rkovalchuk/petspaw__MI2022/static/media/logo.357eb1973096471ea6801715f338def2.svg",
+    "static/media/sortA-Z.svg": "/vict0rkovalchuk/petspaw__MI2022/static/media/sortA-Z.ccd74c4c934b518b4fea31cf6e07e283.svg",
+    "static/media/sortZ-A.svg": "/vict0rkovalchuk/petspaw__MI2022/static/media/sortZ-A.2e1adc89dd9e3e8d97b7d89a1e96789c.svg",
+    "static/media/heart.svg": "/vict0rkovalchuk/petspaw__MI2022/static/media/heart.857c34da9be0c8585e0ba25d5b07c248.svg",
+    "static/media/red-heart.svg": "/vict0rkovalchuk/petspaw__MI2022/static/media/red-heart.24841d9c5881f9860c7cfeb444e7b73b.svg",
+    "static/media/yellow-sad-smile.svg": "/vict0rkovalchuk/petspaw__MI2022/static/media/yellow-sad-smile.c0b569aff7aa7e98ba74692e73efe85e.svg",
+    "static/media/green-gladsmile.svg": "/vict0rkovalchuk/petspaw__MI2022/static/media/green-gladsmile.46dd82e42e10fe2adbd0051df0904a7b.svg",
+    "static/media/dandruff.svg": "/vict0rkovalchuk/petspaw__MI2022/static/media/dandruff.518e734fea7126c7ee63d99a12ced82b.svg",
+    "index.html": "/vict0rkovalchuk/petspaw__MI2022/index.html",
+    "static/media/left.svg": "/vict0rkovalchuk/petspaw__MI2022/static/media/left.416844280c84deb72f43d6e17a88aca8.svg",
+    "static/media/gladsmile.svg": "/vict0rkovalchuk/petspaw__MI2022/static/media/gladsmile.cd46571da4e65da3345c452ef3eb0501.svg",
+    "static/media/sadsmile.svg": "/vict0rkovalchuk/petspaw__MI2022/static/media/sadsmile.57dfd1a58ee0d5ec39c963b2bd8614e3.svg",
+    "static/media/reload.svg": "/vict0rkovalchuk/petspaw__MI2022/static/media/reload.b71e26146d5c1eef6eeddddf31e9633a.svg",
+    "static/media/upload.svg": "/vict0rkovalchuk/petspaw__MI2022/static/media/upload.897ccd92c7846e3c1bff6d879888bacf.svg",
+    "main.36a4381f.css.map": "/vict0rkovalchuk/petspaw__MI2022/static/css/main.36a4381f.css.map",
+    "main.e2c63206.js.map": "/vict0rkovalchuk/petspaw__MI2022/static/js/main.e2c63206.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.36a4381f.css",
+    "static/js/main.e2c63206.js"
+  ]
+}
