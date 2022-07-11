@@ -1,0 +1,217 @@
+.gallery {
+  background-color: transparent;
+  &__content {
+    margin-top: 10px;
+    border-radius: 20px;
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__location {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &-info {
+      display: flex;
+    }
+    &-back {
+      width: 40px;
+      height: 40px;
+      background: #fbe0dc;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    &-title {
+      margin-left: 10px;
+      width: 146px;
+      height: 40px;
+      background: #ff868e;
+      border-radius: 10px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 500;
+      font-size: 20px;
+      letter-spacing: 2px;
+      color: #ffffff;
+      cursor: pointer;
+    }
+    &-load {
+      cursor: pointer;
+      // width: 143px;
+      height: 40px;
+      background: #fbe0dc;
+      border-radius: 10px;
+      display: flex;
+      // justify-content: center;
+      align-items: center;
+      padding-right: 30px;
+      padding-left: 30px;
+      &-title {
+        margin-left: 10px;
+
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: center;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #ff868e;
+      }
+    }
+  }
+  &__selectors {
+    margin-top: 20px;
+    background: #f8f8f7;
+    padding: 0 20px 20px 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  &__selector {
+    display: flex;
+    justify-content: space-between;
+    .select {
+      position: relative;
+      margin-top: 28px;
+      select {
+        width: 290px;
+        height: 40px;
+        background: #ffffff;
+        border-radius: 10px;
+        border: none;
+        border-right: 10px solid #fff;
+        font-weight: 400;
+        font-size: 16px;
+        color: #1d1d1d;
+        padding-left: 10px;
+      }
+      #limit {
+        width: 240px;
+      }
+      &-title {
+        position: absolute;
+        top: -18px;
+        left: 10px;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 18px;
+        color: #8c8c8c;
+        text-transform: uppercase;
+      }
+      &.limit {
+        display: flex;
+      }
+    }
+    &-reload {
+      margin-left: 10px;
+      width: 40px;
+      height: 40px;
+      background: #ffffff;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+  &__grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    // grid-auto-flow: dense;
+    grid-template-rows: 140px;
+    grid-auto-rows: 140px;
+    row-gap: 20px;
+    justify-content: space-between;
+    &-image {
+      position: relative;
+      .image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.3s all;
+        border-radius: 20px;
+      }
+
+      &:nth-child(10n + 1) {
+        grid-column: 1;
+        grid-row: span 2;
+      }
+
+      &:nth-child(10n + 4) {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+
+      &:nth-child(10n + 8) {
+        grid-row: span 2;
+      }
+
+      &:nth-child(10n + 9) {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+    }
+    &-hover {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      .box {
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+        background-size: cover;
+        cursor: pointer;
+        width: 100%;
+        &:hover {
+          .hover-effect {
+            opacity: 1;
+          }
+          .hover-text {
+            right: 50%;
+            transform: translateX(50%);
+          }
+        }
+      }
+      .hover-effect {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 134, 142, 0.6);
+        border-radius: 20px;
+        transition: all 0.2s ease-in-out;
+        opacity: 0;
+        display: flex;
+        align-items: center;
+      }
+      .hover-text {
+        width: 40px;
+        height: 40px;
+        background: #fff;
+        border-radius: 10px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+        color: #ff868e;
+        position: absolute;
+        right: -100%;
+        transition: all 0.4s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
