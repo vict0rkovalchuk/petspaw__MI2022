@@ -10,7 +10,7 @@ import cat from './images/cat.jpg';
 
 function Gallery() {
   return (
-    <div className="home__box gallery">
+    <div className="app__box gallery">
       <Searchbox />
       <div className="gallery__content">
         <div className="gallery__location">

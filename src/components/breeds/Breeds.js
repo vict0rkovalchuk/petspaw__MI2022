@@ -8,7 +8,7 @@ import cat from './images/cat.jpg';
 
 function Breeds() {
   return (
-    <div className="home__box breeds">
+    <div className="app__box breeds">
       <Searchbox />
       <div className="breeds__content">
         <div className="breeds__location">

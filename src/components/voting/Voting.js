@@ -13,7 +13,7 @@ import redHeart from './icons/red-heart.svg';
 
 function Voting() {
   return (
-    <div className="home__box voting">
+    <div className="app__box voting">
       <Searchbox />
       <div className="voting__content">
         <div className="voting__location">

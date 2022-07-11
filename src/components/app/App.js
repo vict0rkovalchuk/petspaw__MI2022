@@ -8,8 +8,6 @@ import {
   NavLink
 } from 'react-router-dom';
 
-import './Home.scss';
-
 import logo from '../../icons/logo.svg';
 import voting from '../../images/cards/vote-table.png';
 import breeds from '../../images/cards/pet-breeds.png';
@@ -23,51 +21,51 @@ import Gallery from '../gallery/Gallery';
 function App() {
   return (
     <Router>
-      <div id="home" className="home">
-        <div className="home__menu">
-          <div className="home__logo">
+      <div id="app" className="app">
+        <div className="app__menu">
+          <Link to="/" className="app__logo">
             <img src={logo} alt="petspaw logo" />
-          </div>
+          </Link>
 
-          <div className="home__cards">
-            <div className="home__title">Hi intern!</div>
-            <div className="home__greeting">
+          <div className="app__cards">
+            <div className="app__title">Hi intern!</div>
+            <div className="app__greeting">
               Welcome to MI 2022 Front-end test
             </div>
-            <div className="home__subtitle">Lets start using The Cat API</div>
-            <div className="home__cards-items">
+            <div className="app__subtitle">Lets start using The Cat API</div>
+            <div className="app__cards-items">
               <NavLink
                 exact
                 activeClassName="activeCard"
                 to="/voting"
-                className="home__card-item"
+                className="app__card-item"
               >
-                <div className="home__card-image card-image voting">
+                <div className="app__card-image card-image voting">
                   <img src={voting} alt="vote-table" />
                 </div>
-                <button className="home__card-button card-btn">Voting</button>
+                <button className="app__card-button card-btn">Voting</button>
               </NavLink>
               <NavLink
                 exact
                 activeClassName="activeCard"
                 to="/breeds"
-                className="home__card-item"
+                className="app__card-item"
               >
-                <div className="home__card-image card-image breeds">
+                <div className="app__card-image card-image breeds">
                   <img src={breeds} alt="vote-table" />
                 </div>
-                <button className="home__card-button card-btn">BREEDS</button>
+                <button className="app__card-button card-btn">BREEDS</button>
               </NavLink>
               <NavLink
                 exact
                 activeClassName="activeCard"
                 to="/gallery"
-                className="home__card-item"
+                className="app__card-item"
               >
-                <div className="home__card-image card-image gallery">
+                <div className="app__card-image card-image gallery">
                   <img src={gallery} alt="vote-table" />
                 </div>
-                <button className="home__card-button card-btn">GALLERY</button>
+                <button className="app__card-button card-btn">GALLERY</button>
               </NavLink>
             </div>
           </div>
@@ -98,7 +96,7 @@ function App() {
 function View() {
   return (
     <>
-      <div className="home__image home__box"></div>
+      <div className="app__image app__box"></div>
       <img src={girlWithPet} alt="girl-and-pet" />
     </>
   );
