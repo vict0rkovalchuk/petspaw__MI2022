@@ -32,6 +32,15 @@
           border: 4px solid #ffffff;
         }
       }
+      &.activeCard {
+        .card-btn {
+          background: #ff868e;
+          color: #fff;
+        }
+        .card-image {
+          border: 4px solid #fbe0dc;
+        }
+      }
     }
 
     &-image {
