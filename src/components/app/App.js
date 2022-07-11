@@ -5,6 +5,7 @@ import {
   Route,
   Switch,
   Link,
+  Redirect,
   NavLink
 } from 'react-router-dom';
 
@@ -87,6 +88,8 @@ function App() {
           <Route exact path="/gallery">
             <Gallery />
           </Route>
+
+          <Redirect to="/" />
         </Switch>
       </div>
     </Router>
