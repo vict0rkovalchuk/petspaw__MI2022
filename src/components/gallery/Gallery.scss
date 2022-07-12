@@ -55,7 +55,7 @@
       padding-left: 30px;
       &-title {
         margin-left: 10px;
-
+        transition: 0.2s all;
         font-weight: 600;
         font-size: 12px;
         line-height: 16px;
@@ -63,6 +63,19 @@
         letter-spacing: 2px;
         text-transform: uppercase;
         color: #ff868e;
+      }
+      transition: 0.2s all;
+      svg path {
+        transition: 0.2s all;
+      }
+      &:hover {
+        background: #ff868e;
+        .gallery__location-load-title {
+          color: #fff;
+        }
+        svg path {
+          fill: #fff;
+        }
       }
     }
   }
@@ -83,14 +96,23 @@
       select {
         width: 290px;
         height: 40px;
-        background: #ffffff;
+        background: #fff;
         border-radius: 10px;
         border: none;
-        border-right: 10px solid #fff;
         font-weight: 400;
         font-size: 16px;
         color: #1d1d1d;
         padding-left: 10px;
+
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 1em;
+        &:hover {
+          border: 2px solid #fbe0dc;
+          background-position: right 6px center;
+        }
       }
       #limit {
         width: 240px;
@@ -119,6 +141,16 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
+      transition: 0.2s all;
+      svg path {
+        transition: 0.2s all;
+      }
+      &:hover {
+        background: #ff868e;
+        svg path {
+          fill: #fff;
+        }
+      }
     }
   }
   &__grid {

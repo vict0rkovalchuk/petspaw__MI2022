@@ -62,13 +62,31 @@
       &.gladsmile {
         background: #97eab9;
         border-radius: 20px 0 0 20px;
+        &:hover {
+          background: rgba(151, 234, 185, 0.3);
+          svg path {
+            fill: #97eab9;
+          }
+        }
       }
       &.heart {
         background: #ff868e;
+        &:hover {
+          background: rgba(255, 134, 142, 0.3);
+          svg path {
+            fill: #ff868e;
+          }
+        }
       }
       &.sadsmile {
         background: #ffd280;
         border-radius: 0 20px 20px 0;
+        &:hover {
+          background: rgba(255, 210, 128, 0.3);
+          svg path {
+            fill: #ffd280;
+          }
+        }
       }
     }
   }
