@@ -2,9 +2,9 @@ import './Favourites.scss';
 
 import Searchbox from '../searchbox/Searchbox';
 
-import back from '../breeds/icons/left.svg';
-import cat from '../breeds/images/cat.jpg';
-import heart from './icons/fullHeart.svg';
+import back from '../../icons/left.svg';
+import cat from '../../images/cat.jpg';
+import heart from '../../icons/fullHeart.svg';
 
 function Favourites() {
   return (

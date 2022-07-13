@@ -7,10 +7,10 @@ import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import Skeleton from '../skeleton/Skeleton';
 
-import back from './icons/left.svg';
-import greenGladsmile from './icons/green-gladsmile.svg';
-import yellowSadSmile from './icons/yellow-sad-smile.svg';
-import redHeart from './icons/red-heart.svg';
+import back from '../../icons/left.svg';
+import greenGladsmile from '../../icons/green-gladsmile.svg';
+import yellowSadSmile from '../../icons/yellow-sad-smile.svg';
+import redHeart from '../../icons/red-heart.svg';
 
 import CatService from '../../services/CatService';
 
@@ -122,7 +122,8 @@ class Voting extends Component {
           <div className="voting__history">
             {userActions.length !== 0 ? userActions : <Skeleton />}
           </div>
-        </div>
+        </div>{' '}
+        <div className="divider" style={{ height: '30px' }}></div>
       </div>
     );
   };

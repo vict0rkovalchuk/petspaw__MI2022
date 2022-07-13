@@ -1,6 +1,6 @@
 import './Searchbox.scss';
 
-import dandruff from './icons/dandruff.svg';
+import dandruff from '../../icons/dandruff.svg';
 
 import { NavLink } from 'react-router-dom';
 

@@ -1,8 +1,8 @@
 import './Breeds.scss';
 import Searchbox from '../searchbox/Searchbox';
 
-import back from './icons/left.svg';
-import cat from './images/cat.jpg';
+import back from '../../icons/left.svg';
+import cat from '../../images/cat.jpg';
 
 function Breeds() {
   return (
@@ -67,136 +67,6 @@ function Breeds() {
           </div>
         </div>
         <div className="breeds__grid">
-          <div className="breeds__grid-image">
-            <img src={cat} alt="cat" />
-
-            <div className="breeds__grid-hover">
-              <div className="box">
-                <div className="hover-effect">
-                  <div className="hover-text">
-                    <div>Abyssinian</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="breeds__grid-image">
-            <img src={cat} alt="cat" />
-
-            <div className="breeds__grid-hover">
-              <div className="box">
-                <div className="hover-effect">
-                  <div className="hover-text">
-                    <div>Abyssinian</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="breeds__grid-image">
-            <img src={cat} alt="cat" />
-
-            <div className="breeds__grid-hover">
-              <div className="box">
-                <div className="hover-effect">
-                  <div className="hover-text">
-                    <div>Abyssinian</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="breeds__grid-image">
-            <img src={cat} alt="cat" />
-
-            <div className="breeds__grid-hover">
-              <div className="box">
-                <div className="hover-effect">
-                  <div className="hover-text">
-                    <div>Abyssinian</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="breeds__grid-image">
-            <img src={cat} alt="cat" />
-
-            <div className="breeds__grid-hover">
-              <div className="box">
-                <div className="hover-effect">
-                  <div className="hover-text">
-                    <div>Abyssinian</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="breeds__grid-image">
-            <img src={cat} alt="cat" />
-
-            <div className="breeds__grid-hover">
-              <div className="box">
-                <div className="hover-effect">
-                  <div className="hover-text">
-                    <div>Abyssinian</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="breeds__grid-image">
-            <img src={cat} alt="cat" />
-
-            <div className="breeds__grid-hover">
-              <div className="box">
-                <div className="hover-effect">
-                  <div className="hover-text">
-                    <div>Abyssinian</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="breeds__grid-image">
-            <img src={cat} alt="cat" />
-
-            <div className="breeds__grid-hover">
-              <div className="box">
-                <div className="hover-effect">
-                  <div className="hover-text">
-                    <div>Abyssinian</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="breeds__grid-image">
-            <img src={cat} alt="cat" />
-
-            <div className="breeds__grid-hover">
-              <div className="box">
-                <div className="hover-effect">
-                  <div className="hover-text">
-                    <div>Abyssinian</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="breeds__grid-image">
-            <img src={cat} alt="cat" />
-
-            <div className="breeds__grid-hover">
-              <div className="box">
-                <div className="hover-effect">
-                  <div className="hover-text">
-                    <div>Abyssinian</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
           <div className="breeds__grid-image">
             <img src={cat} alt="cat" />
 

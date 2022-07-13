@@ -2,9 +2,10 @@ import './Likes.scss';
 
 import Searchbox from '../searchbox/Searchbox';
 
-import back from '../breeds/icons/left.svg';
-import cat from '../breeds/images/cat.jpg';
-import heart from './icons/fullHeart.svg';
+import back from '../../icons/left.svg';
+import cat from '../../images/cat.jpg';
+import heart from '../../icons/fullHeart.svg';
+import gladSmile from '../../icons/gladsmile.svg';
 
 function Likes() {
   return (
@@ -27,7 +28,7 @@ function Likes() {
               <div className="box">
                 <div className="hover-effect">
                   <div className="hover-text">
-                    <img className="img" src={heart} alt="like" />
+                    <img className="img" src={gladSmile} alt="like" />
                   </div>
                 </div>
               </div>
@@ -40,7 +41,7 @@ function Likes() {
               <div className="box">
                 <div className="hover-effect">
                   <div className="hover-text">
-                    <img className="img" src={heart} alt="like" />
+                    <img className="img" src={gladSmile} alt="like" />
                   </div>
                 </div>
               </div>
