@@ -20,6 +20,10 @@ import girlWithPet from '../../images/girl-and-pet-main.png';
 import Voting from '../voting/Voting';
 import Breeds from '../breeds/Breeds';
 import Gallery from '../gallery/Gallery';
+import Likes from '../likes/Likes';
+import Favourites from '../favourites/Favourites';
+import Dislikes from '../dislikes/Dislikes';
+
 import ErrorBoundary from '../errorBoundary/ErrorBoundary';
 
 class App extends Component {
@@ -114,7 +118,10 @@ class App extends Component {
 
             <Route exact path="/voting">
               <ErrorBoundary>
-                <Voting onReaction={this.onReaction} />
+                <Voting
+                  onReaction={this.onReaction}
+                  allReaction={this.state.allReactions}
+                />
               </ErrorBoundary>
             </Route>
 
@@ -124,6 +131,18 @@ class App extends Component {
 
             <Route exact path="/gallery">
               <Gallery />
+            </Route>
+
+            <Route exact path="/likes">
+              <Likes />
+            </Route>
+
+            <Route exact path="/favourites">
+              <Favourites />
+            </Route>
+
+            <Route exact path="/dislikes">
+              <Dislikes />
             </Route>
 
             <Redirect to="/" />

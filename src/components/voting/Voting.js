@@ -5,6 +5,7 @@ import { Component } from 'react';
 import Searchbox from '../searchbox/Searchbox';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
+import Skeleton from '../skeleton/Skeleton';
 
 import back from './icons/left.svg';
 import greenGladsmile from './icons/green-gladsmile.svg';
@@ -30,11 +31,16 @@ class Voting extends Component {
     this.setState({ cat: cat, loading: false, error: false });
   };
 
+  onRandomCatLoading = () => {
+    this.setState({ loading: true });
+  };
+
   onError = () => {
     this.setState({ loading: false, error: true });
   };
 
   updateRandomCat = () => {
+    this.onRandomCatLoading();
     this.catService
       .getRandomCat()
       .then(this.onRandomCatLoaded)
@@ -47,8 +53,63 @@ class Voting extends Component {
     const errorMessage = error ? <ErrorMessage /> : null;
     const spinner = loading ? <Spinner /> : null;
     const content = !(loading || error) ? (
-      <View onReaction={this.props.onReaction} cat={cat} />
+      <View
+        updateRandomCat={() => {
+          this.updateRandomCat();
+        }}
+        onReaction={this.props.onReaction}
+        cat={cat}
+      />
     ) : null;
+
+    let userActions = this.props.allReaction.reverse().map(item => {
+      let descr;
+      let img;
+
+      switch (item.name) {
+        case 'likes':
+          descr = (
+            <p>
+              Image ID: <span>${item.id}</span> was added to Likes
+            </p>
+          );
+          img = greenGladsmile;
+          break;
+
+        case 'favourites':
+          descr = (
+            <p>
+              Image ID: <span>${item.id}</span> was added to Favourites
+            </p>
+          );
+          img = redHeart;
+          break;
+
+        case 'dislikes':
+          descr = (
+            <p>
+              Image ID: <span>${item.id}</span> was added to Dislikes
+            </p>
+          );
+          img = yellowSadSmile;
+          break;
+
+        default:
+          break;
+      }
+
+      return (
+        <div key={item.id} className="voting__history-item">
+          <div className="voting__history-item-data">
+            <div className="voting__history-item-date">{item.time}</div>
+            <div className="voting__history-item-descr">{descr}</div>
+          </div>
+          <div className="voting__history-item-img">
+            <img src={img} alt="red-heart" />
+          </div>
+        </div>
+      );
+    });
 
     return (
       <div className="app__box voting">
@@ -59,47 +120,7 @@ class Voting extends Component {
           {content}
 
           <div className="voting__history">
-            <div className="voting__history-item">
-              <div className="voting__history-item-data">
-                <div className="voting__history-item-date">22:35</div>
-                <div className="voting__history-item-descr">
-                  Image ID: <span>fQSunHvl8</span> was added to Favourites
-                </div>
-              </div>
-              <div className="voting__history-item-img">
-                <img src={redHeart} alt="red-heart" />
-              </div>
-            </div>
-            <div className="voting__history-item">
-              <div className="voting__history-item-data">
-                <div className="voting__history-item-date">22:27</div>
-                <div className="voting__history-item-descr">
-                  Image ID: <span>HJd0XecNX</span> was added to Likes
-                </div>
-              </div>
-              <div className="voting__history-item-img">
-                <img src={greenGladsmile} alt="green glad smile" />
-              </div>
-            </div>
-            <div className="voting__history-item">
-              <div className="voting__history-item-data">
-                <div className="voting__history-item-date">22:21</div>
-                <div className="voting__history-item-descr">
-                  Image ID: <span>BbMFS3bU-</span> was added to Dislikes
-                </div>
-              </div>
-              <div className="voting__history-item-img">
-                <img src={yellowSadSmile} alt="yellow sad smile" />
-              </div>
-            </div>
-            <div className="voting__history-item">
-              <div className="voting__history-item-data">
-                <div className="voting__history-item-date">21:56</div>
-                <div className="voting__history-item-descr">
-                  Image ID: <span>fQSunHvl8</span> was removed from Favourites
-                </div>
-              </div>
-            </div>
+            {userActions.length !== 0 ? userActions : <Skeleton />}
           </div>
         </div>
       </div>
@@ -107,7 +128,7 @@ class Voting extends Component {
   };
 }
 
-const View = ({ cat, onReaction }) => {
+const View = ({ cat, onReaction, updateRandomCat }) => {
   const { image, id } = cat;
 
   return (
@@ -124,7 +145,10 @@ const View = ({ cat, onReaction }) => {
         <img src={image} alt="cat" />
         <div className="voting__reactions">
           <div
-            onClick={e => onReaction(e.target)}
+            onClick={e => {
+              onReaction(e.target);
+              updateRandomCat();
+            }}
             data-name="likes"
             data-id={id}
             className="voting__reactions-item gladsmile"
@@ -149,7 +173,10 @@ const View = ({ cat, onReaction }) => {
             </svg>
           </div>
           <div
-            onClick={e => onReaction(e.target)}
+            onClick={e => {
+              onReaction(e.target);
+              updateRandomCat();
+            }}
             data-name="favourites"
             data-id={id}
             className="voting__reactions-item heart"
@@ -174,7 +201,10 @@ const View = ({ cat, onReaction }) => {
             </svg>
           </div>
           <div
-            onClick={e => onReaction(e.target)}
+            onClick={e => {
+              onReaction(e.target);
+              updateRandomCat();
+            }}
             data-name="dislikes"
             data-id={id}
             className="voting__reactions-item sadsmile"

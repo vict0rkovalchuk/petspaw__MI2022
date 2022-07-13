@@ -1,4 +1,4 @@
-.breeds {
+.favourites {
   background-color: transparent;
   &__content {
     margin-top: 10px;
@@ -11,7 +11,6 @@
 
   &__location {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     &-back {
       width: 40px;
@@ -24,6 +23,7 @@
       cursor: pointer;
     }
     &-title {
+      margin-left: 10px;
       padding-left: 30px;
       padding-right: 30px;
       height: 40px;
@@ -105,7 +105,7 @@
     justify-content: space-between;
     &-image {
       position: relative;
-      img {
+      .image {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -150,7 +150,8 @@
             opacity: 1;
           }
           .hover-text {
-            right: 0;
+            right: 50%;
+            transform: translateX(50%);
           }
         }
       }
@@ -165,13 +166,12 @@
         transition: all 0.2s ease-in-out;
         opacity: 0;
         display: flex;
-        align-items: flex-end;
+        align-items: center;
       }
       .hover-text {
-        width: calc(100% - 40px);
-        padding: 10px;
-        margin: 10px;
-        background: #ffffff;
+        width: 40px;
+        height: 40px;
+        background: #fff;
         border-radius: 10px;
         font-weight: 500;
         font-size: 16px;
@@ -181,6 +181,9 @@
         position: absolute;
         right: -100%;
         transition: all 0.4s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
   }

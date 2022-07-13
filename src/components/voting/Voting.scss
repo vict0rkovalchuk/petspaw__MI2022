@@ -23,7 +23,8 @@
     }
     &-title {
       margin-left: 10px;
-      width: 146px;
+      padding-left: 30px;
+      padding-right: 30px;
       height: 40px;
       background: #ff868e;
       border-radius: 10px;
@@ -120,6 +121,7 @@
         font-size: 16px;
         color: #1d1d1d;
         padding: 3px 10px 3px 10px;
+        line-height: 24px;
       }
       &-descr {
         margin-left: 20px;
@@ -127,6 +129,9 @@
         font-size: 16px;
         line-height: 24px;
         color: #8c8c8c;
+        p {
+          margin: 0;
+        }
         span {
           font-weight: 600;
           color: #000;

@@ -1,0 +1,26 @@
+.cat__vote {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.skeleton {
+  &__block {
+    height: 35px;
+    width: 100%;
+    background-color: #c4c4c4;
+    margin-top: 15px;
+    border-radius: 20px;
+  }
+  &-animate {
+    animation: skeleton-loading 1s linear infinite alternate;
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 80%);
+  }
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}

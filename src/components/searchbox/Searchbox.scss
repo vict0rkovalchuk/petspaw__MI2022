@@ -53,5 +53,11 @@
     &:hover {
       background: #fbe0dc;
     }
+    &.activeReaction {
+      background-color: #ff868e;
+      svg path {
+        fill: #fff;
+      }
+    }
   }
 }
