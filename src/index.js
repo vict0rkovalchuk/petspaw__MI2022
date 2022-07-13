@@ -17,4 +17,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// window.addEventListener('click', e => console.log(e.target.dataset.id));
+// window.addEventListener('click', e => console.log(e.target.dataset.name));

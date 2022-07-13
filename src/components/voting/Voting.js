@@ -6,7 +6,6 @@ import Searchbox from '../searchbox/Searchbox';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 
-// import cat from './images/cat.jpg';
 import back from './icons/left.svg';
 import greenGladsmile from './icons/green-gladsmile.svg';
 import yellowSadSmile from './icons/yellow-sad-smile.svg';
@@ -15,12 +14,6 @@ import redHeart from './icons/red-heart.svg';
 import CatService from '../../services/CatService';
 
 class Voting extends Component {
-  constructor(props) {
-    super(props);
-
-    this.updateRandomCat();
-  }
-
   state = {
     cat: {},
     loading: true,
@@ -28,6 +21,10 @@ class Voting extends Component {
   };
 
   catService = new CatService();
+
+  componentDidMount() {
+    this.updateRandomCat();
+  }
 
   onRandomCatLoaded = cat => {
     this.setState({ cat: cat, loading: false, error: false });
@@ -49,7 +46,9 @@ class Voting extends Component {
 
     const errorMessage = error ? <ErrorMessage /> : null;
     const spinner = loading ? <Spinner /> : null;
-    const content = !(loading || error) ? <View cat={cat} /> : null;
+    const content = !(loading || error) ? (
+      <View onReaction={this.props.onReaction} cat={cat} />
+    ) : null;
 
     return (
       <div className="app__box voting">
@@ -108,7 +107,7 @@ class Voting extends Component {
   };
 }
 
-const View = ({ cat }) => {
+const View = ({ cat, onReaction }) => {
   const { image, id } = cat;
 
   return (
@@ -124,8 +123,14 @@ const View = ({ cat }) => {
       <div className="voting__image">
         <img src={image} alt="cat" />
         <div className="voting__reactions">
-          <div data-id={id} className="voting__reactions-item gladsmile">
+          <div
+            onClick={e => onReaction(e.target)}
+            data-name="likes"
+            data-id={id}
+            className="voting__reactions-item gladsmile"
+          >
             <svg
+              data-name="likes"
               data-id={id}
               width="30"
               height="30"
@@ -134,6 +139,7 @@ const View = ({ cat }) => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
+                data-name="likes"
                 data-id={id}
                 fillRule="evenodd"
                 clipRule="evenodd"
@@ -142,8 +148,14 @@ const View = ({ cat }) => {
               />
             </svg>
           </div>
-          <div data-id={id} className="voting__reactions-item heart">
+          <div
+            onClick={e => onReaction(e.target)}
+            data-name="favourites"
+            data-id={id}
+            className="voting__reactions-item heart"
+          >
             <svg
+              data-name="favourites"
               data-id={id}
               width="30"
               height="26"
@@ -152,6 +164,7 @@ const View = ({ cat }) => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
+                data-name="favourites"
                 data-id={id}
                 fillRule="evenodd"
                 clipRule="evenodd"
@@ -160,8 +173,14 @@ const View = ({ cat }) => {
               />
             </svg>
           </div>
-          <div data-id={id} className="voting__reactions-item sadsmile">
+          <div
+            onClick={e => onReaction(e.target)}
+            data-name="dislikes"
+            data-id={id}
+            className="voting__reactions-item sadsmile"
+          >
             <svg
+              data-name="dislikes"
               data-id={id}
               width="30"
               height="30"
@@ -170,6 +189,7 @@ const View = ({ cat }) => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
+                data-name="dislikes"
                 data-id={id}
                 fillRule="evenodd"
                 clipRule="evenodd"

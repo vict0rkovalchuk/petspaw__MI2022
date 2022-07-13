@@ -1,5 +1,7 @@
 import './App.scss';
 
+import { Component } from 'react';
+
 import {
   BrowserRouter as Router,
   Route,
@@ -18,82 +20,118 @@ import girlWithPet from '../../images/girl-and-pet-main.png';
 import Voting from '../voting/Voting';
 import Breeds from '../breeds/Breeds';
 import Gallery from '../gallery/Gallery';
+import ErrorBoundary from '../errorBoundary/ErrorBoundary';
 
-function App() {
-  return (
-    <Router>
-      <div id="app" className="app">
-        <div className="app__menu">
-          <Link to="/" className="app__logo">
-            <img src={logo} alt="petspaw logo" />
-          </Link>
+class App extends Component {
+  state = {
+    likes: [],
+    favourites: [],
+    dislikes: [],
+    allReactions: []
+  };
 
-          <div className="app__cards">
-            <div className="app__title">Hi intern!</div>
-            <div className="app__greeting">
-              Welcome to MI 2022 Front-end test
-            </div>
-            <div className="app__subtitle">Lets start using The Cat API</div>
-            <div className="app__cards-items">
-              <NavLink
-                exact
-                activeClassName="activeCard"
-                to="/voting"
-                className="app__card-item"
-              >
-                <div className="app__card-image card-image voting">
-                  <img src={voting} alt="vote-table" />
-                </div>
-                <button className="app__card-button card-btn">Voting</button>
-              </NavLink>
-              <NavLink
-                exact
-                activeClassName="activeCard"
-                to="/breeds"
-                className="app__card-item"
-              >
-                <div className="app__card-image card-image breeds">
-                  <img src={breeds} alt="vote-table" />
-                </div>
-                <button className="app__card-button card-btn">BREEDS</button>
-              </NavLink>
-              <NavLink
-                exact
-                activeClassName="activeCard"
-                to="/gallery"
-                className="app__card-item"
-              >
-                <div className="app__card-image card-image gallery">
-                  <img src={gallery} alt="vote-table" />
-                </div>
-                <button className="app__card-button card-btn">GALLERY</button>
-              </NavLink>
+  onReaction = target => {
+    let name = target.dataset.name;
+    let id = target.dataset.id;
+    let today = new Date();
+    let hours =
+      today.getHours().toString().length === 1
+        ? '0' + today.getHours()
+        : today.getHours();
+    let minutes =
+      today.getMinutes().toString().length === 1
+        ? '0' + today.getMinutes()
+        : today.getMinutes();
+
+    let time = hours + ':' + minutes;
+
+    this.setState({
+      [name]: [...this.state[name], id]
+    });
+
+    this.setState({
+      allReactions: [...this.state.allReactions, { name, id, time }]
+    });
+  };
+
+  render() {
+    return (
+      <Router>
+        <div id="app" className="app">
+          <div className="app__menu">
+            <Link to="/" className="app__logo">
+              <img src={logo} alt="petspaw logo" />
+            </Link>
+
+            <div className="app__cards">
+              <div className="app__title">Hi intern!</div>
+              <div className="app__greeting">
+                Welcome to MI 2022 Front-end test
+              </div>
+              <div className="app__subtitle">Lets start using The Cat API</div>
+              <div className="app__cards-items">
+                <NavLink
+                  exact
+                  activeClassName="activeCard"
+                  to="/voting"
+                  className="app__card-item"
+                >
+                  <div className="app__card-image card-image voting">
+                    <img src={voting} alt="vote-table" />
+                  </div>
+                  <button className="app__card-button card-btn">Voting</button>
+                </NavLink>
+                <NavLink
+                  exact
+                  activeClassName="activeCard"
+                  to="/breeds"
+                  className="app__card-item"
+                >
+                  <div className="app__card-image card-image breeds">
+                    <img src={breeds} alt="vote-table" />
+                  </div>
+                  <button className="app__card-button card-btn">BREEDS</button>
+                </NavLink>
+                <NavLink
+                  exact
+                  activeClassName="activeCard"
+                  to="/gallery"
+                  className="app__card-item"
+                >
+                  <div className="app__card-image card-image gallery">
+                    <img src={gallery} alt="vote-table" />
+                  </div>
+                  <button className="app__card-button card-btn">GALLERY</button>
+                </NavLink>
+              </div>
             </div>
           </div>
+
+          <Switch>
+            <Route exact path="/">
+              <View />
+            </Route>
+
+            <Route exact path="/voting">
+              <ErrorBoundary>
+                <Voting onReaction={this.onReaction} />
+              </ErrorBoundary>
+            </Route>
+
+            <Route exact path="/breeds">
+              <Breeds />
+            </Route>
+
+            <Route exact path="/gallery">
+              <Gallery />
+            </Route>
+
+            <Redirect to="/" />
+          </Switch>
         </div>
-
-        <Switch>
-          <Route exact path="/">
-            <View />
-          </Route>
-
-          <Route exact path="/voting">
-            <Voting />
-          </Route>
-
-          <Route exact path="/breeds">
-            <Breeds />
-          </Route>
-
-          <Route exact path="/gallery">
-            <Gallery />
-          </Route>
-
-          <Redirect to="/" />
-        </Switch>
-      </div>
-    </Router>
-  );
+      </Router>
+    );
+  }
 }
 
 function View() {
