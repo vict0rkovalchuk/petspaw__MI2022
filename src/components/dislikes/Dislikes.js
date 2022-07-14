@@ -8,8 +8,6 @@ import ErrorMessage from '../errorMessage/ErrorMessage';
 import NoItems from '../noItems/NoItems';
 
 import back from '../../icons/left.svg';
-import cat from '../../images/cat.jpg';
-import heart from '../../icons/full-heart.svg';
 import sadSmile from '../../icons/sadsmile.svg';
 
 import CatService from '../../services/CatService';

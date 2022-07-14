@@ -49,12 +49,24 @@ class App extends Component {
 
     let time = hours + ':' + minutes;
 
-    this.setState({
-      [name]: [...this.state[name], id]
-    });
+    if (name === 'likes' || name === 'favourites' || name === 'dislikes') {
+      this.setState({
+        [name]: [...this.state[name], id]
+      });
+    }
 
-    this.setState({
-      allReactions: [...this.state.allReactions, { name, id, time }]
+    this.setState(({ allReactions }) => {
+      return {
+        allReactions: [...allReactions, { name, id, time }]
+      };
+    });
+  };
+
+  onRemoveFromFavourites = e => {
+    this.setState(({ favourites }) => {
+      return {
+        favourites: favourites.filter(item => item !== e.target.dataset.id)
+      };
     });
   };
 
@@ -138,7 +150,12 @@ class App extends Component {
             </Route>
 
             <Route exact path="/favourites">
-              <Favourites favourites={this.state.favourites} />
+              <Favourites
+                onReaction={this.onReaction}
+                onRemoveFromFavourites={this.onRemoveFromFavourites}
+                favourites={this.state.favourites}
+                allReaction={this.state.allReactions}
+              />
             </Route>
 
             <Route exact path="/dislikes">

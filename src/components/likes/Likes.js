@@ -8,8 +8,6 @@ import ErrorMessage from '../errorMessage/ErrorMessage';
 import NoItems from '../noItems/NoItems';
 
 import back from '../../icons/left.svg';
-import cat from '../../images/cat.jpg';
-import heart from '../../icons/full-heart.svg';
 import gladSmile from '../../icons/gladsmile.svg';
 
 import CatService from '../../services/CatService';
@@ -62,8 +60,6 @@ class Likes extends Component {
   render() {
     const { cats, loading, error } = this.state;
 
-    const spinner = loading ? <Spinner /> : null;
-
     const errorMessage = error ? <ErrorMessage /> : null;
     let likedCats = cats.map((item, i) => {
       return (
@@ -84,6 +80,14 @@ class Likes extends Component {
     });
     const content = !(loading || error) ? likedCats : [];
 
+    const spinnerOrContent = loading ? (
+      <Spinner />
+    ) : content.length ? (
+      <div className="grid">{content}</div>
+    ) : (
+      <NoItems />
+    );
+
     return (
       <div className="app__box likes">
         <Searchbox />
@@ -96,17 +100,11 @@ class Likes extends Component {
               <p>LIKES</p>
             </div>
           </div>
-          {spinner}
-          {/* {loading ? (
-            <Spinner />
-          ) : content.length ? (
-            <div className="grid">{content}</div>
-          ) : (
-            <NoItems />
-          )} */}
+          {/* {spinner} */}
+          {spinnerOrContent}
           {/*  Above is good ! */}
           {errorMessage}
-          {content.length ? <div className="grid">{content}</div> : <NoItems />}
+          {/* {content.length ? <div className="grid">{content}</div> : <NoItems />} */}
         </div>
         <div className="divider" style={{ height: '30px' }}></div>
       </div>

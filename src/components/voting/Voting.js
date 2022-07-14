@@ -13,6 +13,7 @@ import yellowSadSmile from '../../icons/yellow-sad-smile.svg';
 import redHeart from '../../icons/red-heart.svg';
 
 import CatService from '../../services/CatService';
+import { v4 as uuidv4 } from 'uuid';
 
 class Voting extends Component {
   state = {
@@ -94,18 +95,27 @@ class Voting extends Component {
           img = yellowSadSmile;
           break;
 
+        case 'removeFromFavourites':
+          descr = (
+            <p>
+              Image ID: <span>${item.id}</span> was removed from Favourites
+            </p>
+          );
+          img = null;
+          break;
+
         default:
           break;
       }
 
       return (
-        <div key={item.id} className="voting__history-item">
+        <div key={uuidv4()} className="voting__history-item">
           <div className="voting__history-item-data">
             <div className="voting__history-item-date">{item.time}</div>
             <div className="voting__history-item-descr">{descr}</div>
           </div>
           <div className="voting__history-item-img">
-            <img src={img} alt="red-heart" />
+            {!img ? null : <img src={img} alt="red-heart" />}
           </div>
         </div>
       );

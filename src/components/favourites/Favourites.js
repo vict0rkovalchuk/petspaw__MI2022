@@ -8,7 +8,6 @@ import ErrorMessage from '../errorMessage/ErrorMessage';
 import NoItems from '../noItems/NoItems';
 
 import back from '../../icons/left.svg';
-import cat from '../../images/cat.jpg';
 import heart from '../../icons/full-heart.svg';
 
 import CatService from '../../services/CatService';
@@ -71,8 +70,22 @@ class Favourites extends Component {
           <div className="grid-hover">
             <div className="box">
               <div className="hover-appear">
-                <div className="hover-img">
-                  <img className="img" src={heart} alt="like" />
+                <div
+                  data-name="removeFavourites"
+                  data-id={item.id}
+                  onClick={e => {
+                    this.props.onRemoveFromFavourites(e);
+                    this.props.onReaction(e.target);
+                  }}
+                  className="hover-img"
+                >
+                  <img
+                    data-name="removeFromFavourites"
+                    data-id={item.id}
+                    className="img"
+                    src={heart}
+                    alt="like"
+                  />
                 </div>
               </div>
             </div>
@@ -81,6 +94,25 @@ class Favourites extends Component {
       );
     });
     const content = !(loading || error) ? likedCats : [];
+
+    let filteredFavouritesReactions = this.props.allReaction.filter(
+      item => item.name === 'removeFromFavourites'
+    );
+    let userActions = filteredFavouritesReactions.map(item => {
+      return (
+        <div key={item.id} className="voting__history-item">
+          <div className="voting__history-item-data">
+            <div className="voting__history-item-date">{item.time}</div>
+            <div className="voting__history-item-descr">
+              <p>
+                Image ID: <span>${item.id}</span> was removed from Favourites
+              </p>
+            </div>
+          </div>
+          <div className="voting__history-item-img">{null}</div>
+        </div>
+      );
+    });
 
     return (
       <div className="app__box favourites">
@@ -97,6 +129,10 @@ class Favourites extends Component {
           {spinner}
           {errorMessage}
           {content.length ? <div className="grid">{content}</div> : <NoItems />}
+
+          {content.length !== 0 ? (
+            <div className="voting__history">{userActions}</div>
+          ) : null}
         </div>
         <div className="divider" style={{ height: '30px' }}></div>
       </div>
