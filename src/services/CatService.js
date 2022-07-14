@@ -25,8 +25,9 @@ class CatService {
     return this.__transformCat(res[0]);
   };
 
-  getCatById = id => {
-    return this.getResource(`${this._apiBase}${id}`);
+  getCatById = async id => {
+    const res = await this.getResource(`${this._apiBase}${id}`);
+    return this.__transformCat(res);
   };
 
   __transformCat = cat => {

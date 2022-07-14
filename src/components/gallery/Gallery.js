@@ -3,7 +3,7 @@ import './Gallery.scss';
 import Searchbox from '../searchbox/Searchbox';
 
 import back from '../../icons/left.svg';
-import heart from '../../icons/heart.svg';
+import heart from '../../icons/small-heart.svg';
 import cat from '../../images/cat.jpg';
 
 function Gallery() {
@@ -12,11 +12,11 @@ function Gallery() {
       <Searchbox />
       <div className="gallery__content">
         <div className="gallery__location">
-          <div className="gallery__location-info">
-            <div className="gallery__location-back">
+          <div className="location">
+            <div className="location-back">
               <img src={back} alt="back" />
             </div>
-            <div className="gallery__location-title">
+            <div className="location-title">
               <p>GALLERY</p>
             </div>
           </div>
@@ -99,66 +99,66 @@ function Gallery() {
             </div>
           </div>
         </div>
-        <div className="gallery__grid">
-          <div className="gallery__grid-image">
+        <div className="grid">
+          <div className="grid-image">
             <img className="image" src={cat} alt="cat" />
 
-            <div className="gallery__grid-hover">
+            <div className="grid-hover">
               <div className="box">
-                <div className="hover-effect">
-                  <div className="hover-text">
+                <div className="hover-appear">
+                  <div className="hover-img">
                     <img className="img" src={heart} alt="like" />
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="gallery__grid-image">
+          <div className="grid-image">
             <img className="image" src={cat} alt="cat" />
 
-            <div className="gallery__grid-hover">
+            <div className="grid-hover">
               <div className="box">
-                <div className="hover-effect">
-                  <div className="hover-text">
+                <div className="hover-appear">
+                  <div className="hover-img">
                     <img className="img" src={heart} alt="like" />
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="gallery__grid-image">
+          <div className="grid-image">
             <img className="image" src={cat} alt="cat" />
 
-            <div className="gallery__grid-hover">
+            <div className="grid-hover">
               <div className="box">
-                <div className="hover-effect">
-                  <div className="hover-text">
+                <div className="hover-appear">
+                  <div className="hover-img">
                     <img className="img" src={heart} alt="like" />
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="gallery__grid-image">
+          <div className="grid-image">
             <img className="image" src={cat} alt="cat" />
 
-            <div className="gallery__grid-hover">
+            <div className="grid-hover">
               <div className="box">
-                <div className="hover-effect">
-                  <div className="hover-text">
+                <div className="hover-appear">
+                  <div className="hover-img">
                     <img className="img" src={heart} alt="like" />
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="gallery__grid-image">
+          <div className="grid-image">
             <img className="image" src={cat} alt="cat" />
 
-            <div className="gallery__grid-hover">
+            <div className="grid-hover">
               <div className="box">
-                <div className="hover-effect">
-                  <div className="hover-text">
+                <div className="hover-appear">
+                  <div className="hover-img">
                     <img className="img" src={heart} alt="like" />
                   </div>
                 </div>

@@ -8,7 +8,7 @@ import App from './components/app/App';
 
 // const catService = new CatService();
 
-// catService.getRandomCat().then(res => console.log(res));
+// catService.getCatById('rs').then(res => console.log(res));
 
 ReactDOM.render(
   <React.StrictMode>

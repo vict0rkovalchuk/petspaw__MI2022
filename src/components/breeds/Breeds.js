@@ -9,14 +9,16 @@ function Breeds() {
     <div className="app__box breeds">
       <Searchbox />
       <div className="breeds__content">
-        <div className="breeds__location">
-          <div className="breeds__location-back">
-            <img src={back} alt="back" />
+        <div className="breeds__menu">
+          <div className="location">
+            <div className="location-back">
+              <img src={back} alt="back" />
+            </div>
+            <div className="location-title">
+              <p>BREEDS</p>
+            </div>
           </div>
-          <div className="breeds__location-title">
-            <p>BREEDS</p>
-          </div>
-          <div className="breeds__location-breeds">
+          <div className="breeds__menu-breeds">
             <select name="select" defaultValue="value1">
               <option value="value1">All breeds</option>
               <option value="value2">Abyssinian</option>
@@ -25,7 +27,7 @@ function Breeds() {
               <option value="value5">American Curl</option>
             </select>
           </div>
-          <div className="breeds__location-limit">
+          <div className="breeds__menu-limit">
             <select name="select" defaultValue="value2">
               <option value="value1">Limit: 5</option>
               <option value="value2">Limit: 10</option>
@@ -33,7 +35,7 @@ function Breeds() {
               <option value="value4">Limit: 20</option>
             </select>
           </div>
-          <div className="breeds__location-sort breeds__location-sortZ-A">
+          <div className="breeds__menu-sort breeds__location-sortZ-A">
             <svg
               width="19"
               height="22"
@@ -49,7 +51,7 @@ function Breeds() {
               />
             </svg>
           </div>
-          <div className="breeds__location-sort breeds__location-sortA-Z">
+          <div className="breeds__menu-sort breeds__location-sortA-Z">
             <svg
               width="19"
               height="22"
@@ -66,11 +68,12 @@ function Breeds() {
             </svg>
           </div>
         </div>
-        <div className="breeds__grid">
-          <div className="breeds__grid-image">
-            <img src={cat} alt="cat" />
 
-            <div className="breeds__grid-hover">
+        <div className="grid">
+          <div className="grid-image">
+            <img className="image" src={cat} alt="cat" />
+
+            <div className="grid-hover">
               <div className="box">
                 <div className="hover-effect">
                   <div className="hover-text">
@@ -80,10 +83,10 @@ function Breeds() {
               </div>
             </div>
           </div>
-          <div className="breeds__grid-image">
-            <img src={cat} alt="cat" />
+          <div className="grid-image">
+            <img className="image" src={cat} alt="cat" />
 
-            <div className="breeds__grid-hover">
+            <div className="grid-hover">
               <div className="box">
                 <div className="hover-effect">
                   <div className="hover-text">
@@ -93,10 +96,10 @@ function Breeds() {
               </div>
             </div>
           </div>
-          <div className="breeds__grid-image">
-            <img src={cat} alt="cat" />
+          <div className="grid-image">
+            <img className="image" src={cat} alt="cat" />
 
-            <div className="breeds__grid-hover">
+            <div className="grid-hover">
               <div className="box">
                 <div className="hover-effect">
                   <div className="hover-text">
@@ -106,10 +109,10 @@ function Breeds() {
               </div>
             </div>
           </div>
-          <div className="breeds__grid-image">
-            <img src={cat} alt="cat" />
+          <div className="grid-image">
+            <img className="image" src={cat} alt="cat" />
 
-            <div className="breeds__grid-hover">
+            <div className="grid-hover">
               <div className="box">
                 <div className="hover-effect">
                   <div className="hover-text">
@@ -119,10 +122,10 @@ function Breeds() {
               </div>
             </div>
           </div>
-          <div className="breeds__grid-image">
-            <img src={cat} alt="cat" />
+          <div className="grid-image">
+            <img className="image" src={cat} alt="cat" />
 
-            <div className="breeds__grid-hover">
+            <div className="grid-hover">
               <div className="box">
                 <div className="hover-effect">
                   <div className="hover-text">

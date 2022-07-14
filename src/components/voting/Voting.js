@@ -122,7 +122,7 @@ class Voting extends Component {
           <div className="voting__history">
             {userActions.length !== 0 ? userActions : <Skeleton />}
           </div>
-        </div>{' '}
+        </div>
         <div className="divider" style={{ height: '30px' }}></div>
       </div>
     );
@@ -134,11 +134,11 @@ const View = ({ cat, onReaction, updateRandomCat }) => {
 
   return (
     <>
-      <div className="voting__location">
-        <div className="voting__location-back">
+      <div className="location">
+        <div className="location-back">
           <img src={back} alt="back" />
         </div>
-        <div className="voting__location-title">
+        <div className="location-title">
           <p>VOTING</p>
         </div>
       </div>

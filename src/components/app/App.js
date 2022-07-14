@@ -134,15 +134,15 @@ class App extends Component {
             </Route>
 
             <Route exact path="/likes">
-              <Likes />
+              <Likes likes={this.state.likes} />
             </Route>
 
             <Route exact path="/favourites">
-              <Favourites />
+              <Favourites favourites={this.state.favourites} />
             </Route>
 
             <Route exact path="/dislikes">
-              <Dislikes />
+              <Dislikes dislikes={this.state.dislikes} />
             </Route>
 
             <Redirect to="/" />
