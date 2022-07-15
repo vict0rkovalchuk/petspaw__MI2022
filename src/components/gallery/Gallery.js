@@ -8,10 +8,10 @@ import cat from '../../images/cat.jpg';
 
 function Gallery() {
   return (
-    <div className="app__box gallery">
+    <div className="app__box gallery block">
       <Searchbox />
-      <div className="gallery__content">
-        <div className="gallery__location">
+      <div className="gallery__content block__content">
+        <div className="gallery__location block__location">
           <div className="location">
             <div className="location-back">
               <img src={back} alt="back" />

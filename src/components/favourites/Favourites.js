@@ -59,9 +59,8 @@ class Favourites extends Component {
   render() {
     const { cats, loading, error } = this.state;
 
-    const spinner = loading ? <Spinner /> : null;
-
     const errorMessage = error ? <ErrorMessage /> : null;
+
     let likedCats = cats.map((item, i) => {
       return (
         <div key={i} className="grid-image">
@@ -108,24 +107,24 @@ class Favourites extends Component {
     );
     let userActions = filteredFavouritesReactions.reverse().map(item => {
       return (
-        <div key={item.id} className="voting__history-item">
-          <div className="voting__history-item-data">
-            <div className="voting__history-item-date">{item.time}</div>
-            <div className="voting__history-item-descr">
+        <div key={item.id} className="history-item">
+          <div className="history-item-data">
+            <div className="history-item-date">{item.time}</div>
+            <div className="history-item-descr">
               <p>
                 Image ID: <span>${item.id}</span> was removed from Favourites
               </p>
             </div>
           </div>
-          <div className="voting__history-item-img">{null}</div>
+          <div className="history-item-img">{null}</div>
         </div>
       );
     });
 
     return (
-      <div className="app__box favourites">
+      <div className="app__box favourites block">
         <Searchbox />
-        <div className="favourites__content">
+        <div className="favourites__content block__content">
           <div className="location">
             <div className="location-back">
               <img src={back} alt="back" />
@@ -134,13 +133,10 @@ class Favourites extends Component {
               <p>FAVOURITES</p>
             </div>
           </div>
-          {/* {spinner} */}
           {spinnerOrContent}
           {errorMessage}
-          {/* {content.length ? <div className="grid">{content}</div> : <NoItems />} */}
-
-          {userActions.length !== 0 ? (
-            <div className="voting__history">{userActions}</div>
+          {content.length !== 0 && userActions.length !== 0 ? (
+            <div className="history">{userActions}</div>
           ) : null}
         </div>
         <div className="divider" style={{ height: '30px' }}></div>

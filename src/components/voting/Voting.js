@@ -127,12 +127,12 @@ class Voting extends Component {
       }
 
       return (
-        <div key={uuidv4()} className="voting__history-item">
-          <div className="voting__history-item-data">
-            <div className="voting__history-item-date">{item.time}</div>
-            <div className="voting__history-item-descr">{descr}</div>
+        <div key={uuidv4()} className="history-item">
+          <div className="history-item-data">
+            <div className="history-item-date">{item.time}</div>
+            <div className="history-item-descr">{descr}</div>
           </div>
-          <div className="voting__history-item-img">
+          <div className="history-item-img">
             {!img ? null : <img src={img} alt="red-heart" />}
           </div>
         </div>
@@ -140,14 +140,14 @@ class Voting extends Component {
     });
 
     return (
-      <div className="app__box voting">
+      <div className="app__box voting block">
         <Searchbox />
-        <div className="voting__content">
+        <div className="voting__content block__content">
           {errorMessage}
           {spinner}
           {content}
 
-          <div className="voting__history">
+          <div className="history">
             {userActions.length !== 0 ? userActions : <Skeleton />}
           </div>
         </div>
@@ -162,14 +162,17 @@ const View = ({ cat, onReaction, updateRandomCat }) => {
 
   return (
     <>
-      <div className="location">
-        <div className="location-back">
-          <img src={back} alt="back" />
-        </div>
-        <div className="location-title">
-          <p>VOTING</p>
+      <div className="voting__location block__location">
+        <div className="location">
+          <div className="location-back">
+            <img src={back} alt="back" />
+          </div>
+          <div className="location-title">
+            <p>VOTING</p>
+          </div>
         </div>
       </div>
+
       <div className="voting__image">
         <img src={image} alt="cat" />
         <div className="voting__reactions">

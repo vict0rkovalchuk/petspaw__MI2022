@@ -1,14 +1,4 @@
 .breeds {
-  background-color: transparent;
-  &__content {
-    margin-top: 10px;
-    border-radius: 20px;
-    background-color: #fff;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-  }
-
   &__menu {
     display: flex;
     justify-content: space-between;
@@ -19,7 +9,6 @@
         padding-left: 10px;
         background: #f8f8f7;
         border: none;
-        // border-right: 10px solid #f8f8f7;
         border-radius: 10px;
         font-weight: 400;
         font-size: 16px;

@@ -59,9 +59,8 @@ class Likes extends Component {
   render() {
     const { cats, loading, error } = this.state;
 
-    const spinner = loading ? <Spinner /> : null;
-
     const errorMessage = error ? <ErrorMessage /> : null;
+
     let likedCats = cats.map((item, i) => {
       return (
         <div key={i} className="grid-image">
@@ -93,6 +92,7 @@ class Likes extends Component {
         </div>
       );
     });
+
     const content = !(loading || error) ? likedCats : [];
 
     const spinnerOrContent = loading ? (
@@ -108,24 +108,24 @@ class Likes extends Component {
     );
     let userActions = filteredLikesReactions.reverse().map(item => {
       return (
-        <div key={item.id} className="voting__history-item">
-          <div className="voting__history-item-data">
-            <div className="voting__history-item-date">{item.time}</div>
-            <div className="voting__history-item-descr">
+        <div key={item.id} className="history-item">
+          <div className="history-item-data">
+            <div className="history-item-date">{item.time}</div>
+            <div className="history-item-descr">
               <p>
                 Image ID: <span>${item.id}</span> was removed from Likes
               </p>
             </div>
           </div>
-          <div className="voting__history-item-img">{null}</div>
+          <div className="history-item-img">{null}</div>
         </div>
       );
     });
 
     return (
-      <div className="app__box likes">
+      <div className="app__box likes block">
         <Searchbox />
-        <div className="likes__content">
+        <div className="likes__content block__content">
           <div className="location">
             <div className="location-back">
               <img src={back} alt="back" />
@@ -134,14 +134,10 @@ class Likes extends Component {
               <p>LIKES</p>
             </div>
           </div>
-          {/* {spinner} */}
           {spinnerOrContent}
-          {/*  Above is good ! */}
           {errorMessage}
-          {/* {content.length ? <div className="grid">{content}</div> : <NoItems />} */}
-
-          {userActions.length !== 0 ? (
-            <div className="voting__history">{userActions}</div>
+          {content.length !== 0 && userActions.length !== 0 ? (
+            <div className="history">{userActions}</div>
           ) : null}
         </div>
         <div className="divider" style={{ height: '30px' }}></div>

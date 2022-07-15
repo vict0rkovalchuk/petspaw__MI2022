@@ -1,0 +1,18 @@
+.block {
+  background-color: transparent;
+  &__content {
+    min-height: 770px;
+    margin-top: 10px;
+    border-radius: 20px;
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__location {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
