@@ -70,6 +70,22 @@ class App extends Component {
     });
   };
 
+  onRemoveFromLikes = e => {
+    this.setState(({ likes }) => {
+      return {
+        likes: likes.filter(item => item !== e.target.dataset.id)
+      };
+    });
+  };
+
+  onRemoveFromDislikes = e => {
+    this.setState(({ dislikes }) => {
+      return {
+        dislikes: dislikes.filter(item => item !== e.target.dataset.id)
+      };
+    });
+  };
+
   render() {
     return (
       <Router>
@@ -146,7 +162,12 @@ class App extends Component {
             </Route>
 
             <Route exact path="/likes">
-              <Likes likes={this.state.likes} />
+              <Likes
+                onReaction={this.onReaction}
+                onRemoveFromLikes={this.onRemoveFromLikes}
+                likes={this.state.likes}
+                allReaction={this.state.allReactions}
+              />
             </Route>
 
             <Route exact path="/favourites">
@@ -159,7 +180,12 @@ class App extends Component {
             </Route>
 
             <Route exact path="/dislikes">
-              <Dislikes dislikes={this.state.dislikes} />
+              <Dislikes
+                onReaction={this.onReaction}
+                onRemoveFromDislikes={this.onRemoveFromDislikes}
+                allReaction={this.state.allReactions}
+                dislikes={this.state.dislikes}
+              />
             </Route>
 
             <Redirect to="/" />

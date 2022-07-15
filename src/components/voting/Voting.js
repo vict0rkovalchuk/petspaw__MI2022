@@ -104,6 +104,24 @@ class Voting extends Component {
           img = null;
           break;
 
+        case 'removeFromLikes':
+          descr = (
+            <p>
+              Image ID: <span>${item.id}</span> was removed from Likes
+            </p>
+          );
+          img = null;
+          break;
+
+        case 'removeDislikes':
+          descr = (
+            <p>
+              Image ID: <span>${item.id}</span> was removed from Dislikes
+            </p>
+          );
+          img = null;
+          break;
+
         default:
           break;
       }

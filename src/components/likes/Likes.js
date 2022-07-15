@@ -43,7 +43,6 @@ class Likes extends Component {
 
   updateRandomCat = () => {
     // this.onRandomCatLoading();
-
     if (this.props.likes.length === 0) {
       this.setState({ loading: false });
       return;
@@ -60,6 +59,8 @@ class Likes extends Component {
   render() {
     const { cats, loading, error } = this.state;
 
+    const spinner = loading ? <Spinner /> : null;
+
     const errorMessage = error ? <ErrorMessage /> : null;
     let likedCats = cats.map((item, i) => {
       return (
@@ -69,8 +70,22 @@ class Likes extends Component {
           <div className="grid-hover">
             <div className="box">
               <div className="hover-appear">
-                <div className="hover-img">
-                  <img className="img" src={gladSmile} alt="like" />
+                <div
+                  data-name="removeLikes"
+                  data-id={item.id}
+                  onClick={e => {
+                    this.props.onRemoveFromLikes(e);
+                    this.props.onReaction(e.target);
+                  }}
+                  className="hover-img"
+                >
+                  <img
+                    data-name="removeFromLikes"
+                    data-id={item.id}
+                    className="img"
+                    src={gladSmile}
+                    alt="like"
+                  />
                 </div>
               </div>
             </div>
@@ -87,6 +102,25 @@ class Likes extends Component {
     ) : (
       <NoItems />
     );
+
+    let filteredLikesReactions = this.props.allReaction.filter(
+      item => item.name === 'removeFromLikes'
+    );
+    let userActions = filteredLikesReactions.reverse().map(item => {
+      return (
+        <div key={item.id} className="voting__history-item">
+          <div className="voting__history-item-data">
+            <div className="voting__history-item-date">{item.time}</div>
+            <div className="voting__history-item-descr">
+              <p>
+                Image ID: <span>${item.id}</span> was removed from Likes
+              </p>
+            </div>
+          </div>
+          <div className="voting__history-item-img">{null}</div>
+        </div>
+      );
+    });
 
     return (
       <div className="app__box likes">
@@ -105,6 +139,10 @@ class Likes extends Component {
           {/*  Above is good ! */}
           {errorMessage}
           {/* {content.length ? <div className="grid">{content}</div> : <NoItems />} */}
+
+          {userActions.length !== 0 ? (
+            <div className="voting__history">{userActions}</div>
+          ) : null}
         </div>
         <div className="divider" style={{ height: '30px' }}></div>
       </div>

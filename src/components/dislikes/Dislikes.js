@@ -70,8 +70,22 @@ class Dislikes extends Component {
           <div className="grid-hover">
             <div className="box">
               <div className="hover-appear">
-                <div className="hover-img">
-                  <img className="img" src={sadSmile} alt="like" />
+                <div
+                  data-name="removeDislikes"
+                  data-id={item.id}
+                  onClick={e => {
+                    this.props.onRemoveFromDislikes(e);
+                    this.props.onReaction(e.target);
+                  }}
+                  className="hover-img"
+                >
+                  <img
+                    data-name="removeDislikes"
+                    data-id={item.id}
+                    className="img"
+                    src={sadSmile}
+                    alt="like"
+                  />
                 </div>
               </div>
             </div>
@@ -80,6 +94,33 @@ class Dislikes extends Component {
       );
     });
     const content = !(loading || error) ? likedCats : [];
+
+    const spinnerOrContent = loading ? (
+      <Spinner />
+    ) : content.length ? (
+      <div className="grid">{content}</div>
+    ) : (
+      <NoItems />
+    );
+
+    let filteredDislikesReactions = this.props.allReaction.filter(
+      item => item.name === 'removeDislikes'
+    );
+    let userActions = filteredDislikesReactions.reverse().map(item => {
+      return (
+        <div key={item.id} className="voting__history-item">
+          <div className="voting__history-item-data">
+            <div className="voting__history-item-date">{item.time}</div>
+            <div className="voting__history-item-descr">
+              <p>
+                Image ID: <span>${item.id}</span> was removed from Dislikes
+              </p>
+            </div>
+          </div>
+          <div className="voting__history-item-img">{null}</div>
+        </div>
+      );
+    });
 
     return (
       <div className="app__box dislikes">
@@ -93,9 +134,14 @@ class Dislikes extends Component {
               <p>DISLIKES</p>
             </div>
           </div>
-          {spinner}
+          {/* {spinner} */}
+          {spinnerOrContent}
           {errorMessage}
-          {content.length ? <div className="grid">{content}</div> : <NoItems />}
+          {/* {content.length ? <div className="grid">{content}</div> : <NoItems />} */}
+
+          {userActions.length !== 0 ? (
+            <div className="voting__history">{userActions}</div>
+          ) : null}
         </div>
         <div className="divider" style={{ height: '30px' }}></div>
       </div>

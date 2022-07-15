@@ -95,10 +95,18 @@ class Favourites extends Component {
     });
     const content = !(loading || error) ? likedCats : [];
 
+    const spinnerOrContent = loading ? (
+      <Spinner />
+    ) : content.length ? (
+      <div className="grid">{content}</div>
+    ) : (
+      <NoItems />
+    );
+
     let filteredFavouritesReactions = this.props.allReaction.filter(
       item => item.name === 'removeFromFavourites'
     );
-    let userActions = filteredFavouritesReactions.map(item => {
+    let userActions = filteredFavouritesReactions.reverse().map(item => {
       return (
         <div key={item.id} className="voting__history-item">
           <div className="voting__history-item-data">
@@ -126,11 +134,12 @@ class Favourites extends Component {
               <p>FAVOURITES</p>
             </div>
           </div>
-          {spinner}
+          {/* {spinner} */}
+          {spinnerOrContent}
           {errorMessage}
-          {content.length ? <div className="grid">{content}</div> : <NoItems />}
+          {/* {content.length ? <div className="grid">{content}</div> : <NoItems />} */}
 
-          {content.length !== 0 ? (
+          {userActions.length !== 0 ? (
             <div className="voting__history">{userActions}</div>
           ) : null}
         </div>
