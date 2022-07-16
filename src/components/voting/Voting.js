@@ -143,6 +143,16 @@ class Voting extends Component {
       <div className="app__box voting block">
         <Searchbox />
         <div className="voting__content block__content">
+          <div className="voting__location block__location">
+            <div className="location">
+              <div className="location-back">
+                <img src={back} alt="back" />
+              </div>
+              <div className="location-title">
+                <p>VOTING</p>
+              </div>
+            </div>
+          </div>
           {errorMessage}
           {spinner}
           {content}
@@ -162,17 +172,6 @@ const View = ({ cat, onReaction, updateRandomCat }) => {
 
   return (
     <>
-      <div className="voting__location block__location">
-        <div className="location">
-          <div className="location-back">
-            <img src={back} alt="back" />
-          </div>
-          <div className="location-title">
-            <p>VOTING</p>
-          </div>
-        </div>
-      </div>
-
       <div className="voting__image">
         <img src={image} alt="cat" />
         <div className="voting__reactions">
