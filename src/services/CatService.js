@@ -1,5 +1,5 @@
 class CatService {
-  _apiBase = 'https://api.thecatapi.com/v1/images/';
+  _apiBase = 'https://api.thecatapi.com/v1/';
 
   getResource = async url => {
     let res = await fetch(url, {
@@ -17,7 +17,7 @@ class CatService {
   };
 
   getAllBreeds = async () => {
-    const res = await this.getResource(`https://api.thecatapi.com/v1/breeds`);
+    const res = await this.getResource(`${this._apiBase}breeds`);
     return this.__transformBreedsList(res);
   };
 
@@ -28,18 +28,18 @@ class CatService {
 
   getBreedsImages = (limit, page) => {
     const res = this.getResource(
-      `https://api.thecatapi.com/v1/breeds?&limit=${limit}&page=${page}`
+      `${this._apiBase}breeds?&limit=${limit}&page=${page}`
     );
     return res;
   };
 
   getRandomCat = async () => {
-    const res = await this.getResource(`${this._apiBase}search`);
+    const res = await this.getResource(`${this._apiBase}images/search`);
     return this.__transformCat(res[0]);
   };
 
   getCatById = async id => {
-    const res = await this.getResource(`${this._apiBase}${id}`);
+    const res = await this.getResource(`${this._apiBase}images/${id}`);
     return this.__transformCat(res);
   };
 
