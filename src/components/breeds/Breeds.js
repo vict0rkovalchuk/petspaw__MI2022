@@ -23,8 +23,15 @@ class Breeds extends Component {
   catService = new CatService();
 
   componentDidMount() {
-    this.updateBreedsList();
-    this.updateBreedsImages();
+    Promise.all([
+      this.catService.getAllBreeds(),
+      this.catService.getBreedsImages()
+    ])
+      .then(response => {
+        this.onBreedsListLoaded(response[0]);
+        this.onBreedsImagesLoaded(response[1]);
+      })
+      .catch(this.onError);
   }
 
   onBreedsListLoaded = list => {
@@ -74,13 +81,6 @@ class Breeds extends Component {
     this.setState({ selectedValue: e.target.value });
     const limit = e.target.options[e.target.selectedIndex].dataset.limit;
     this.updateBreedsImages(limit);
-  };
-
-  updateBreedsList = () => {
-    this.catService
-      .getAllBreeds()
-      .then(this.onBreedsListLoaded)
-      .catch(this.onError);
   };
 
   updateBreedsImages = (limit = 10, page = 0) => {

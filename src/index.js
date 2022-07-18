@@ -8,7 +8,7 @@ import App from './components/app/App';
 
 // const catService = new CatService();
 
-// catService.getBreedsImages().then(res => console.log(res));
+// catService.getAllCats().then(res => console.log(res));
 
 ReactDOM.render(
   <React.StrictMode>

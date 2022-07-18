@@ -21,12 +21,19 @@ class CatService {
     return this.__transformBreedsList(res);
   };
 
-  // getAllCats = () => {
-  //   const res = this.getResource(`${this._apiBase}search?&limit=10&page=0`);
-  //   return res;
-  // };
+  getAllCats = (
+    limit = 5,
+    order = 'RANDOM',
+    types = 'jpg,png',
+    breedId = ''
+  ) => {
+    const res = this.getResource(
+      `${this._apiBase}images/search?&limit=${limit}&page=0&order=${order}&mime_types=${types}&breed_ids=${breedId}`
+    );
+    return res;
+  };
 
-  getBreedsImages = (limit, page) => {
+  getBreedsImages = (limit = 10, page = 0) => {
     const res = this.getResource(
       `${this._apiBase}breeds?&limit=${limit}&page=${page}`
     );
