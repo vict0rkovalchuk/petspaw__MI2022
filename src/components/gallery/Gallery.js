@@ -16,6 +16,8 @@ import falseCheck from '../../icons/false-check-mark.svg';
 
 import CatService from '../../services/CatService';
 
+import axios from 'axios';
+
 class Gallery extends Component {
   state = {
     breedsList: [],
@@ -321,7 +323,10 @@ class Modal extends Component {
   state = {
     drag: false,
     image: '',
-    fileName: ''
+    fileName: '',
+    selectedFile: null,
+    error: false,
+    isRequestFinished: false
   };
 
   dragStartHandler = e => {
@@ -336,7 +341,12 @@ class Modal extends Component {
 
   onDropHandler = e => {
     e.preventDefault();
+    this.setState({ error: false });
+    this.setState({ isRequestFinished: false });
+
     let files = [...e.dataTransfer.files];
+
+    this.setState({ selectedFile: e.dataTransfer.files[0] });
 
     this.setState({ fileName: files[0].name });
 
@@ -353,9 +363,13 @@ class Modal extends Component {
   };
 
   getImage = e => {
-    // console.log(e.target.value);
     e.preventDefault();
+    this.setState({ error: false });
+    this.setState({ isRequestFinished: false });
+
     let files = e.target.files;
+
+    this.setState({ selectedFile: e.target.files[0] });
 
     this.setState({ fileName: files[0].name });
 
@@ -371,32 +385,43 @@ class Modal extends Component {
     this.setState({ drag: false });
   };
 
-  // handleSubmit = e => {
-  //   e.preventDefault();
+  onSuccessfulLoading = () => {
+    this.setState({ isRequestFinished: true });
+    this.setState({ error: false });
+    this.setState({ image: '' });
+  };
 
-  //   console.log('njk');
-  //   let opt = {
-  //     method: 'POST',
-  // body: JSON.stringify({
-  //   file: this.state.fileName,
-  //   sub_id: ''
-  // }),
-  //     headers: {
-  //       'Content-Type': 'application/json; charset=utf-8',
-  //       'x-api-key': '25d43ff1-1cea-4522-a197-fb9a5dc0c092'
-  //     }
-  //   };
+  onErrorLoading = () => {
+    this.setState({ isRequestFinished: true });
+    this.setState({ error: true });
+  };
 
-  //   fetch('https://api.thecatapi.com/v1/images/upload', opt)
-  //     .then(res => res.json())
-  //     .then(res => console.log(res))
-  //     .catch(err => alert(err));
-  // };
+  handleSubmit = e => {
+    e.preventDefault();
+
+    let file = this.state.selectedFile;
+    let formdata = new FormData();
+    formdata.append('file', file);
+    formdata.append('sub_id', '');
+
+    axios({
+      url: 'https://api.thecatapi.com/v1/images/upload?api_key=25d43ff1-1cea-4522-a197-fb9a5dc0c092',
+      method: 'POST',
+      data: formdata
+    })
+      .then(res => {
+        // console.log(res);
+        this.onSuccessfulLoading();
+      })
+      .catch(err => {
+        this.onErrorLoading();
+      });
+  };
 
   render() {
     return (
       <div className={`modal ${this.props.isOpen ? 'is-open' : null}`}>
-        <div className="modal__overlay"></div>
+        <div onClick={this.props.onClose} className="modal__overlay"></div>
 
         <div className="modal__content">
           <div className="modal__close">
@@ -434,7 +459,7 @@ class Modal extends Component {
             onDragLeave={e => this.dragLeaveHandler(e)}
             onDragOver={e => this.dragStartHandler(e)}
             onDrop={e => this.onDropHandler(e)}
-            className="modal__field"
+            className={this.state.error ? 'modal__field error' : 'modal__field'}
           >
             {!this.state.image ? (
               <>
@@ -468,27 +493,32 @@ class Modal extends Component {
             <div className="modal__status">
               <div>Image File Name: {this.state.fileName}</div>
               <div
-                // onClick={e => {
-                //   this.handleSubmit(e);
-                // }}
+                onClick={e => {
+                  this.handleSubmit(e);
+                }}
                 className="modal__status-uploadbtn"
               >
                 UPLOAD PHOTO
               </div>
             </div>
           )}
-          {/* <div className="modal__message">
-            <img src={trueCheck} alt="true check" />
-            <div className="modal__message-descr">
-              Thanks for the Upload - Cat found!
-            </div>
-          </div> */}
-          {/* <div className="modal__message">
-            <img src={falseCheck} alt="true check" />
-            <div className="modal__message-descr">
-              No Cat found - try a different one
-            </div>
-          </div> */}
+          {this.state.isRequestFinished ? (
+            !this.state.error ? (
+              <div className="modal__message">
+                <img src={trueCheck} alt="true check" />
+                <div className="modal__message-descr">
+                  Thanks for the Upload - Cat found!
+                </div>
+              </div>
+            ) : (
+              <div className="modal__message">
+                <img src={falseCheck} alt="true check" />
+                <div className="modal__message-descr">
+                  No Cat found - try a different one
+                </div>
+              </div>
+            )
+          ) : null}
         </div>
       </div>
     );
