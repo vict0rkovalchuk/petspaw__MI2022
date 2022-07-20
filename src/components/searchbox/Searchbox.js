@@ -1,18 +1,36 @@
 import './Searchbox.scss';
 
 import dandruff from '../../icons/dandruff.svg';
+import { useState } from 'react';
 
 import { NavLink } from 'react-router-dom';
 
-function Searchbox() {
+function Searchbox(props) {
+  const [value, setValue] = useState('');
+
+  const onInputHandler = e => {
+    setValue(e.target.value);
+  };
+
   return (
     <div className="search">
-      <div className="search__input">
-        <input type="text" placeholder="Search for breeds by name" />
-        <div className="search__dandruff" tabIndex={0}>
+      <NavLink to="/search" tabIndex={0} className="search__input">
+        <input
+          value={value}
+          onChange={onInputHandler}
+          type="text"
+          placeholder="Search for breeds by name"
+        />
+        <div
+          onClick={() => {
+            props.updateData(value);
+          }}
+          className="search__dandruff"
+          tabIndex={0}
+        >
           <img src={dandruff} alt="dandruff" />
         </div>
-      </div>
+      </NavLink>
 
       <NavLink
         activeClassName="activeReaction"

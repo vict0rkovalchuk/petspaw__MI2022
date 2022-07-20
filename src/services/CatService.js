@@ -50,6 +50,24 @@ class CatService {
     return this.__transformCat(res);
   };
 
+  getSearchedQueryId = async query => {
+    const res = await this.getResource(
+      `${this._apiBase}breeds/search?q=${query}`
+    );
+    if (res.length === 0) {
+      return null;
+    }
+    return res[0].id;
+  };
+
+  getImagesForQuery = async query => {
+    const id = await this.getSearchedQueryId(query);
+    const res = await this.getResource(
+      `${this._apiBase}images/search?&limit=25&breed_ids=${id}`
+    );
+    return res;
+  };
+
   __transformCat = cat => {
     return {
       image: cat.url,

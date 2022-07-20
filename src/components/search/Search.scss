@@ -1,0 +1,13 @@
+.searchbox {
+  &__results {
+    margin-top: 20px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 29px;
+    color: #8c8c8c;
+    .bold {
+      font-weight: 600;
+      color: #1d1d1d;
+    }
+  }
+}

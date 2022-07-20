@@ -33,16 +33,11 @@ class Likes extends Component {
     });
   };
 
-  // onRandomCatLoading = () => {
-  //   this.setState({ loading: true });
-  // };
-
   onError = () => {
     this.setState({ loading: false, error: true });
   };
 
   updateRandomCat = () => {
-    // this.onRandomCatLoading();
     if (this.props.likes.length === 0) {
       this.setState({ loading: false });
       return;

@@ -22,9 +22,17 @@
       color: #8c8c8c;
       &:hover {
         border: 2px solid #fbe0dc;
-        // &::placeholder {
-        //   color: #fff;
-        // }
+        &::placeholder {
+          color: #fff;
+        }
+      }
+      &:focus {
+        outline: none;
+        border: 2px solid #ff868e;
+        &::placeholder {
+          color: #1d1d1d;
+        }
+        color: #1d1d1d;
       }
     }
   }

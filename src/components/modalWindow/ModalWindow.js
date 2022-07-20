@@ -105,7 +105,6 @@ class ModalWindow extends Component {
       data: formdata
     })
       .then(res => {
-        // console.log(res);
         this.onSuccessfulLoading();
       })
       .catch(err => {

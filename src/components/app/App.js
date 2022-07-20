@@ -23,6 +23,7 @@ import Gallery from '../gallery/Gallery';
 import Likes from '../likes/Likes';
 import Favourites from '../favourites/Favourites';
 import Dislikes from '../dislikes/Dislikes';
+import Search from '../search/Search';
 
 import ErrorBoundary from '../errorBoundary/ErrorBoundary';
 
@@ -159,6 +160,10 @@ class App extends Component {
 
             <Route exact path="/gallery">
               <Gallery />
+            </Route>
+
+            <Route exact path="/search">
+              <Search />
             </Route>
 
             <Route exact path="/likes">
