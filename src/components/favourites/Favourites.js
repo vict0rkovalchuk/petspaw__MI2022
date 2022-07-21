@@ -2,13 +2,13 @@ import './Favourites.scss';
 
 import { Component } from 'react';
 
+import back from '../../icons/left.svg';
+import heart from '../../icons/full-heart.svg';
+
 import Searchbox from '../searchbox/Searchbox';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import NoItems from '../noItems/NoItems';
-
-import back from '../../icons/left.svg';
-import heart from '../../icons/full-heart.svg';
 
 import CatService from '../../services/CatService';
 

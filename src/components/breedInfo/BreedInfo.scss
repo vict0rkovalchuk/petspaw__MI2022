@@ -1,0 +1,132 @@
+.breedinfo {
+  .location {
+    &-title {
+      background: #fbe0dc;
+      color: #ff868e;
+    }
+    &-id {
+      padding: 5px 30px;
+      background: #ff868e;
+      border-radius: 10px;
+      margin-left: 10px;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 30px;
+      letter-spacing: 2px;
+      color: #ffffff;
+    }
+  }
+  &__slider {
+    margin-top: 20px;
+    &-item {
+      text-align: center;
+      height: 360px;
+      img {
+        display: inline;
+        object-fit: cover;
+        border-radius: 20px;
+        height: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+  &__table {
+    border: 2px solid #fbe0dc;
+    border-radius: 20px;
+    margin-top: 51px;
+    padding: 26px 40px 40px 40px;
+    position: relative;
+  }
+  &__title {
+    white-space: nowrap;
+    text-align: center;
+    background: #ffffff;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 52px;
+    color: #1d1d1d;
+    border-radius: 20px;
+    padding: 0 40px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &__subtitle {
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 29px;
+    color: #8c8c8c;
+  }
+  &__info {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__temperament {
+    width: 270px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+    color: #8c8c8c;
+    .bold {
+      font-weight: 600;
+      color: #1d1d1d;
+    }
+  }
+  &__parameters {
+    width: 270px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+    color: #8c8c8c;
+    .bold {
+      font-weight: 600;
+      color: #1d1d1d;
+    }
+  }
+}
+
+.slick-slide {
+  img {
+    display: inline !important;
+  }
+}
+
+.slick-slider {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.slick-dots li button:before {
+  width: 10px !important;
+  height: 10px !important;
+}
+
+.slick-dots {
+  background: #fff;
+  width: 105px !important;
+  height: 30px !important;
+  border-radius: 20px;
+  bottom: 0 !important;
+  transform: translateY(35%);
+  li {
+    margin: 0 2.5px !important;
+    background-color: #fbe0dc;
+    border-radius: 100%;
+    width: 10px !important;
+    height: 10px !important;
+    button {
+      width: 10px !important;
+      height: 10px !important;
+      text-indent: -9999px;
+    }
+  }
+  li.slick-active button {
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 100%;
+    background-color: #ff868e;
+  }
+}

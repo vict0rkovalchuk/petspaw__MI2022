@@ -2,13 +2,13 @@ import './Search.scss';
 
 import { Component } from 'react';
 
+import back from '../../icons/left.svg';
+import gladSmile from '../../icons/gladsmile.svg';
+
 import Searchbox from '../searchbox/Searchbox';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import NoItems from '../noItems/NoItems';
-
-import back from '../../icons/left.svg';
-import gladSmile from '../../icons/gladsmile.svg';
 
 import CatService from '../../services/CatService';
 
@@ -95,9 +95,13 @@ class Search extends Component {
               <p>SEARCH</p>
             </div>
           </div>
-          <div className="searchbox__results">
-            Search results for: <span className="bold">{queryString}</span>
-          </div>
+          {queryString.length > 0 ? (
+            <div className="searchbox__results">
+              Search results for: <span className="bold">{queryString}</span>
+            </div>
+          ) : (
+            <div className="searchbox__results">Enter a breed name above </div>
+          )}
           {errorMessage}
           {spinner}
           {content}

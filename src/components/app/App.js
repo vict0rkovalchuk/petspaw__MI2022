@@ -1,7 +1,6 @@
 import './App.scss';
 
 import { Component } from 'react';
-
 import {
   BrowserRouter as Router,
   Route,
@@ -24,15 +23,20 @@ import Likes from '../likes/Likes';
 import Favourites from '../favourites/Favourites';
 import Dislikes from '../dislikes/Dislikes';
 import Search from '../search/Search';
-
 import ErrorBoundary from '../errorBoundary/ErrorBoundary';
+import BreedInfo from '../breedInfo/BreedInfo';
 
 class App extends Component {
   state = {
     likes: [],
     favourites: [],
     dislikes: [],
-    allReactions: []
+    allReactions: [],
+    idForBreedInfo: null
+  };
+
+  handleIdForBreedInfo = e => {
+    this.setState({ idForBreedInfo: e.target.dataset.id });
   };
 
   onReaction = target => {
@@ -155,7 +159,11 @@ class App extends Component {
             </Route>
 
             <Route exact path="/breeds">
-              <Breeds />
+              <Breeds handleIdForBreedInfo={this.handleIdForBreedInfo} />
+            </Route>
+
+            <Route exact path="/breedinfo">
+              <BreedInfo id={this.state.idForBreedInfo} />
             </Route>
 
             <Route exact path="/gallery">

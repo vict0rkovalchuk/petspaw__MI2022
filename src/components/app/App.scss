@@ -7,6 +7,7 @@
   justify-content: space-between;
   position: relative;
   &__menu {
+    position: fixed;
     margin: 30px 72px 0 147px;
   }
   &__logo {
@@ -99,6 +100,8 @@
     color: #1d1d1d;
   }
   &__box {
+    position: absolute;
+    right: 0;
     width: 680px;
     height: 840px;
     background: #fbe0dc;

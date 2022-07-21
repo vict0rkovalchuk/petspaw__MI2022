@@ -2,15 +2,15 @@ import './Voting.scss';
 
 import { Component } from 'react';
 
+import back from '../../icons/left.svg';
+import greenGladsmile from '../../icons/green-gladsmile.svg';
+import yellowSadSmile from '../../icons/yellow-sad-smile.svg';
+import redHeart from '../../icons/small-red-heart.svg';
+
 import Searchbox from '../searchbox/Searchbox';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import Skeleton from '../skeleton/Skeleton';
-
-import back from '../../icons/left.svg';
-import greenGladsmile from '../../icons/green-gladsmile.svg';
-import yellowSadSmile from '../../icons/yellow-sad-smile.svg';
-import redHeart from '../../icons/red-heart.svg';
 
 import CatService from '../../services/CatService';
 import { v4 as uuidv4 } from 'uuid';

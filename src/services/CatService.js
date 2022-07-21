@@ -21,6 +21,11 @@ class CatService {
     return this.__transformBreedsList(res);
   };
 
+  getBreedById = async id => {
+    const res = await this.getResource(`${this._apiBase}breeds/${id}`);
+    return res;
+  };
+
   getAllCats = (
     limit = 5,
     order = 'RANDOM',

@@ -2,14 +2,16 @@ import './Gallery.scss';
 
 import { Component } from 'react';
 
+import back from '../../icons/left.svg';
+import heart from '../../icons/small-heart.svg';
+import cat from '../../images/cat.jpg';
+
 import Searchbox from '../searchbox/Searchbox';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import ModalWindow from '../modalWindow/ModalWindow';
-
-import back from '../../icons/left.svg';
-import heart from '../../icons/small-heart.svg';
-import cat from '../../images/cat.jpg';
+import { ReactComponent as Reload } from '../../icons/reload.svg';
+import { ReactComponent as Upload } from '../../icons/upload.svg';
 
 import CatService from '../../services/CatService';
 
@@ -247,20 +249,7 @@ class Gallery extends Component {
                 }}
                 className="gallery__selector-reload"
               >
-                <svg
-                  width="18"
-                  height="20"
-                  viewBox="0 0 18 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M8.48189 2.49989L6.93396 0.953004L7.88633 0L11.0577 3.16928L7.88634 6.33873L6.93395 5.38576L8.47232 3.84832C4.51244 3.99813 1.3473 7.25498 1.3473 11.2478C1.3473 15.3361 4.66547 18.6527 8.75744 18.6527C12.8494 18.6527 16.1676 15.3361 16.1676 11.2478V10.5742H17.5149V11.2478C17.5149 16.081 13.5927 20 8.75744 20C3.92221 20 0 16.081 0 11.2478C0 6.50682 3.77407 2.64542 8.48189 2.49989Z"
-                    fill="#FF868E"
-                  />
-                </svg>
+                <Reload />
               </div>
             </div>
           </div>
@@ -284,20 +273,7 @@ class Gallery extends Component {
             </div>
             <div onClick={this.onOpenWindow} className="gallery__location-load">
               <div className="gallery__location-load-img">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M7.86601 0L12.2355 4.03339L11.4129 4.92452L8.48919 2.22567V12.3618H7.27645V2.30464L4.67336 4.90772L3.81583 4.05019L7.86601 0ZM1.21274 14.7873V7.51081H0V16H15.7656V7.51081H14.5529V14.7873H1.21274Z"
-                    fill="#FF868E"
-                  />
-                </svg>
+                <Upload />
               </div>
               <div className="gallery__location-load-title">Upload</div>
             </div>
