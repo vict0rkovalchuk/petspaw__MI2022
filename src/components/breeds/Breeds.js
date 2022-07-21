@@ -29,12 +29,20 @@ const Breeds = () => {
   const history = useHistory();
 
   useEffect(() => {
+    let isActive = true;
+
     Promise.all([catService.getAllBreeds(), catService.getBreedsImages()])
       .then(response => {
-        onBreedsListLoaded(response[0]);
-        onBreedsImagesLoaded(response[1]);
+        if (isActive) {
+          onBreedsListLoaded(response[0]);
+          onBreedsImagesLoaded(response[1]);
+        }
       })
       .catch(onError);
+
+    return () => {
+      isActive = false;
+    };
   }, []);
 
   const onBreedsListLoaded = list => {

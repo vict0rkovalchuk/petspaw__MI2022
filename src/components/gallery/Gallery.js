@@ -35,15 +35,23 @@ const Gallery = () => {
   const history = useHistory();
 
   useEffect(() => {
+    let isActive = true;
+
     Promise.all([
       catService.getAllBreeds(),
       catService.getAllCats(limit, order, types, breedId)
     ])
       .then(response => {
-        onBreedsListLoaded(response[0]);
-        onCatImagesLoaded(response[1]);
+        if (isActive) {
+          onBreedsListLoaded(response[0]);
+          onCatImagesLoaded(response[1]);
+        }
       })
       .catch(onError);
+
+    return () => {
+      isActive = false;
+    };
   }, []);
 
   const onBreedsListLoaded = list => {
