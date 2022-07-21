@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import back from '../../icons/left.svg';
 
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import Slider from 'react-slick';
 
 import Searchbox from '../searchbox/Searchbox';
@@ -14,7 +14,6 @@ import ErrorMessage from '../errorMessage/ErrorMessage';
 import Spinner from '../spinner/Spinner';
 
 const BreedInfo = () => {
-  const [id, setId] = useState(null);
   const [breedInfo, setBreedInfo] = useState({});
   const [catsImages, setCatsImages] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -22,6 +21,7 @@ const BreedInfo = () => {
 
   const catService = new CatService();
 
+  const history = useHistory();
   const { breedId } = useParams();
 
   useEffect(() => {
@@ -110,7 +110,7 @@ const BreedInfo = () => {
       <Searchbox />
       <div className="breedinfo__content block__content">
         <div className="location">
-          <div className="location-back">
+          <div onClick={() => history.goBack()} className="location-back">
             <img src={back} alt="back" />
           </div>
           <div className="location-title">

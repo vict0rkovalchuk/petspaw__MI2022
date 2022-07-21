@@ -196,7 +196,7 @@ class App extends Component {
               />
             </Route>
 
-            {/* <Redirect to="/" /> */}
+            <Redirect to="/" />
           </Switch>
         </div>
       </Router>

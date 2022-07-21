@@ -1,6 +1,7 @@
 import './Voting.scss';
 
-import { Component } from 'react';
+import { Component, useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import back from '../../icons/left.svg';
 import greenGladsmile from '../../icons/green-gladsmile.svg';
@@ -15,157 +16,153 @@ import Skeleton from '../skeleton/Skeleton';
 import CatService from '../../services/CatService';
 import { v4 as uuidv4 } from 'uuid';
 
-class Voting extends Component {
-  state = {
-    cat: {},
-    loading: true,
-    error: false
+const Voting = ({ onReaction, allReaction }) => {
+  const [cat, setCat] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  const catService = new CatService();
+
+  let history = useHistory();
+
+  useEffect(() => {
+    updateRandomCat();
+  }, []);
+
+  const onRandomCatLoaded = cat => {
+    setCat(cat);
+    setLoading(false);
+    setError(false);
   };
 
-  catService = new CatService();
-
-  componentDidMount() {
-    this.updateRandomCat();
-  }
-
-  onRandomCatLoaded = cat => {
-    this.setState({ cat: cat, loading: false, error: false });
+  const onRandomCatLoading = () => {
+    setLoading(true);
   };
 
-  onRandomCatLoading = () => {
-    this.setState({ loading: true });
+  const onError = () => {
+    setLoading(false);
+    setError(true);
   };
 
-  onError = () => {
-    this.setState({ loading: false, error: true });
+  const updateRandomCat = () => {
+    onRandomCatLoading();
+    catService.getRandomCat().then(onRandomCatLoaded).catch(onError);
   };
 
-  updateRandomCat = () => {
-    this.onRandomCatLoading();
-    this.catService
-      .getRandomCat()
-      .then(this.onRandomCatLoaded)
-      .catch(this.onError);
-  };
+  const errorMessage = error ? <ErrorMessage /> : null;
+  const spinner = loading ? <Spinner /> : null;
+  const content = !(loading || error) ? (
+    <View
+      updateRandomCat={() => {
+        updateRandomCat();
+      }}
+      onReaction={onReaction}
+      cat={cat}
+    />
+  ) : null;
 
-  render = () => {
-    const { cat, loading, error } = this.state;
+  let userActions = [...allReaction].reverse().map(item => {
+    let descr;
+    let img;
 
-    const errorMessage = error ? <ErrorMessage /> : null;
-    const spinner = loading ? <Spinner /> : null;
-    const content = !(loading || error) ? (
-      <View
-        updateRandomCat={() => {
-          this.updateRandomCat();
-        }}
-        onReaction={this.props.onReaction}
-        cat={cat}
-      />
-    ) : null;
+    switch (item.name) {
+      case 'likes':
+        descr = (
+          <p>
+            Image ID: <span>${item.id}</span> was added to Likes
+          </p>
+        );
+        img = greenGladsmile;
+        break;
 
-    let userActions = this.props.allReaction.reverse().map(item => {
-      let descr;
-      let img;
+      case 'favourites':
+        descr = (
+          <p>
+            Image ID: <span>${item.id}</span> was added to Favourites
+          </p>
+        );
+        img = redHeart;
+        break;
 
-      switch (item.name) {
-        case 'likes':
-          descr = (
-            <p>
-              Image ID: <span>${item.id}</span> was added to Likes
-            </p>
-          );
-          img = greenGladsmile;
-          break;
+      case 'dislikes':
+        descr = (
+          <p>
+            Image ID: <span>${item.id}</span> was added to Dislikes
+          </p>
+        );
+        img = yellowSadSmile;
+        break;
 
-        case 'favourites':
-          descr = (
-            <p>
-              Image ID: <span>${item.id}</span> was added to Favourites
-            </p>
-          );
-          img = redHeart;
-          break;
+      case 'removeFromFavourites':
+        descr = (
+          <p>
+            Image ID: <span>${item.id}</span> was removed from Favourites
+          </p>
+        );
+        img = null;
+        break;
 
-        case 'dislikes':
-          descr = (
-            <p>
-              Image ID: <span>${item.id}</span> was added to Dislikes
-            </p>
-          );
-          img = yellowSadSmile;
-          break;
+      case 'removeFromLikes':
+        descr = (
+          <p>
+            Image ID: <span>${item.id}</span> was removed from Likes
+          </p>
+        );
+        img = null;
+        break;
 
-        case 'removeFromFavourites':
-          descr = (
-            <p>
-              Image ID: <span>${item.id}</span> was removed from Favourites
-            </p>
-          );
-          img = null;
-          break;
+      case 'removeDislikes':
+        descr = (
+          <p>
+            Image ID: <span>${item.id}</span> was removed from Dislikes
+          </p>
+        );
+        img = null;
+        break;
 
-        case 'removeFromLikes':
-          descr = (
-            <p>
-              Image ID: <span>${item.id}</span> was removed from Likes
-            </p>
-          );
-          img = null;
-          break;
-
-        case 'removeDislikes':
-          descr = (
-            <p>
-              Image ID: <span>${item.id}</span> was removed from Dislikes
-            </p>
-          );
-          img = null;
-          break;
-
-        default:
-          break;
-      }
-
-      return (
-        <div key={uuidv4()} className="history-item">
-          <div className="history-item-data">
-            <div className="history-item-date">{item.time}</div>
-            <div className="history-item-descr">{descr}</div>
-          </div>
-          <div className="history-item-img">
-            {!img ? null : <img src={img} alt="red-heart" />}
-          </div>
-        </div>
-      );
-    });
+      default:
+        break;
+    }
 
     return (
-      <div className="app__box voting block">
-        <Searchbox />
-        <div className="voting__content block__content">
-          <div className="voting__location block__location">
-            <div className="location">
-              <div className="location-back">
-                <img src={back} alt="back" />
-              </div>
-              <div className="location-title">
-                <p>VOTING</p>
-              </div>
-            </div>
-          </div>
-          {errorMessage}
-          {spinner}
-          {content}
-
-          <div className="history">
-            {userActions.length !== 0 ? userActions : <Skeleton />}
-          </div>
+      <div key={uuidv4()} className="history-item">
+        <div className="history-item-data">
+          <div className="history-item-date">{item.time}</div>
+          <div className="history-item-descr">{descr}</div>
         </div>
-        <div className="divider" style={{ height: '30px' }}></div>
+        <div className="history-item-img">
+          {!img ? null : <img src={img} alt="red-heart" />}
+        </div>
       </div>
     );
-  };
-}
+  });
+
+  return (
+    <div className="app__box voting block">
+      <Searchbox />
+      <div className="voting__content block__content">
+        <div className="voting__location block__location">
+          <div className="location">
+            <div onClick={() => history.goBack()} className="location-back">
+              <img src={back} alt="back" />
+            </div>
+            <div className="location-title">
+              <p>VOTING</p>
+            </div>
+          </div>
+        </div>
+        {errorMessage}
+        {spinner}
+        {content}
+
+        <div className="history">
+          {userActions.length !== 0 ? userActions : <Skeleton />}
+        </div>
+      </div>
+      <div className="divider" style={{ height: '30px' }}></div>
+    </div>
+  );
+};
 
 const View = ({ cat, onReaction, updateRandomCat }) => {
   const { image, id } = cat;
