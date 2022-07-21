@@ -4,7 +4,8 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import back from '../../icons/left.svg';
 
-import { Component, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Slider from 'react-slick';
 
 import Searchbox from '../searchbox/Searchbox';
@@ -12,7 +13,7 @@ import CatService from '../../services/CatService';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import Spinner from '../spinner/Spinner';
 
-const BreedInfo = props => {
+const BreedInfo = () => {
   const [id, setId] = useState(null);
   const [breedInfo, setBreedInfo] = useState({});
   const [catsImages, setCatsImages] = useState([]);
@@ -21,17 +22,19 @@ const BreedInfo = props => {
 
   const catService = new CatService();
 
+  const { breedId } = useParams();
+
   useEffect(() => {
     Promise.all([
-      catService.getBreedById(props.id),
-      catService.getAllCats(5, 'RANDOM', 'jpg,png', props.id)
+      catService.getBreedById(breedId),
+      catService.getAllCats(5, 'RANDOM', 'jpg,png', breedId)
     ])
       .then(response => {
         onBreedsListLoaded(response[0]);
         onCatImagesLoaded(response[1]);
       })
       .catch(onError);
-  });
+  }, []);
 
   const onBreedsListLoaded = data => {
     setBreedInfo(data);
@@ -84,11 +87,18 @@ const BreedInfo = props => {
             {breedInfo.temperament}
           </div>
           <div className="breedinfo__parameters">
-            <span className="bold">Origin:</span> {origin} <br />
-            <span className="bold">Weight:</span>{' '}
-            {id ? breedInfo.weight.imperial : null} kgs
-            <br />
-            <span className="bold">Life span:</span> {breedInfo.life_span} years
+            <div>
+              <span className="bold">Origin:</span> {breedInfo.origin}{' '}
+            </div>
+            <div className="breedinfo__parameters-gap">
+              <span className="bold">Weight:</span>{' '}
+              {breedInfo.id ? breedInfo.weight.imperial : null} kgs
+            </div>
+
+            <div className="breedinfo__parameters-gap">
+              <span className="bold">Life span:</span> {breedInfo.life_span}{' '}
+              years
+            </div>
           </div>
         </div>
       </div>
@@ -106,7 +116,7 @@ const BreedInfo = props => {
           <div className="location-title">
             <p>BREEDS</p>
           </div>
-          <div className="location-id">{this.props.id}</div>
+          <div className="location-id">{breedId}</div>
         </div>
         {errorMessage}
         {spinner}

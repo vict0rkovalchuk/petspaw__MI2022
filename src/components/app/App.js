@@ -31,12 +31,7 @@ class App extends Component {
     likes: [],
     favourites: [],
     dislikes: [],
-    allReactions: [],
-    idForBreedInfo: null
-  };
-
-  handleIdForBreedInfo = e => {
-    this.setState({ idForBreedInfo: e.target.dataset.id });
+    allReactions: []
   };
 
   onReaction = target => {
@@ -159,16 +154,12 @@ class App extends Component {
             </Route>
 
             <Route exact path="/breeds">
-              <Breeds handleIdForBreedInfo={this.handleIdForBreedInfo} />
+              <Breeds />
             </Route>
 
-            <Route exact path="/breedinfo">
-              <BreedInfo id={this.state.idForBreedInfo} />
+            <Route exact path="/breeds/:breedId">
+              <BreedInfo />
             </Route>
-
-            {/* <Route exact path="/breedinfo">
-              <BreedInfo id={this.state.idForBreedInfo} />
-            </Route> */}
 
             <Route exact path="/gallery">
               <Gallery />
@@ -205,7 +196,7 @@ class App extends Component {
               />
             </Route>
 
-            <Redirect to="/" />
+            {/* <Redirect to="/" /> */}
           </Switch>
         </div>
       </Router>

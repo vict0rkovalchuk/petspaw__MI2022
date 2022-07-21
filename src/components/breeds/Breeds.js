@@ -145,10 +145,8 @@ class Breeds extends Component {
             <div className="box">
               <div className="hover-effect">
                 <Link
-                  onClick={this.props.handleIdForBreedInfo}
                   style={{ textDecoration: 'none' }}
-                  to="/breedinfo"
-                  // to={`/breeds/${item.url ? item.breeds[0].id : item.id}`}
+                  to={`/breeds/${item.url ? item.breeds[0].id : item.id}`}
                   data-id={item.url ? item.breeds[0].id : item.id}
                   className="hover-text"
                 >
