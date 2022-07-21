@@ -12,7 +12,7 @@ import { ReactComponent as ZASort } from '../../icons/sort-z-a.svg';
 import { ReactComponent as AZSort } from '../../icons/sort-a-z.svg';
 
 import CatService from '../../services/CatService';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Breeds extends Component {
   state = {
@@ -144,17 +144,18 @@ class Breeds extends Component {
           <div className="grid-hover">
             <div className="box">
               <div className="hover-effect">
-                <NavLink
+                <Link
                   onClick={this.props.handleIdForBreedInfo}
                   style={{ textDecoration: 'none' }}
                   to="/breedinfo"
+                  // to={`/breeds/${item.url ? item.breeds[0].id : item.id}`}
                   data-id={item.url ? item.breeds[0].id : item.id}
                   className="hover-text"
                 >
                   <div data-id={item.url ? item.breeds[0].id : item.id}>
                     {item.name ? item.name : item.breeds[0].name}
                   </div>
-                </NavLink>
+                </Link>
               </div>
             </div>
           </div>

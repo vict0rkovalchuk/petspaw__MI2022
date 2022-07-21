@@ -166,6 +166,10 @@ class App extends Component {
               <BreedInfo id={this.state.idForBreedInfo} />
             </Route>
 
+            {/* <Route exact path="/breedinfo">
+              <BreedInfo id={this.state.idForBreedInfo} />
+            </Route> */}
+
             <Route exact path="/gallery">
               <Gallery />
             </Route>
