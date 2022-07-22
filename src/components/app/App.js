@@ -64,6 +64,7 @@ class App extends Component {
   };
 
   onRemoveFromFavourites = e => {
+    e.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
     this.setState(({ favourites }) => {
       return {
         favourites: favourites.filter(item => item !== e.target.dataset.id)
@@ -72,6 +73,7 @@ class App extends Component {
   };
 
   onRemoveFromLikes = e => {
+    e.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
     this.setState(({ likes }) => {
       return {
         likes: likes.filter(item => item !== e.target.dataset.id)
@@ -80,6 +82,7 @@ class App extends Component {
   };
 
   onRemoveFromDislikes = e => {
+    e.target.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
     this.setState(({ dislikes }) => {
       return {
         dislikes: dislikes.filter(item => item !== e.target.dataset.id)
@@ -251,6 +254,7 @@ class App extends Component {
 
             <Route exact path="/likes">
               <Likes
+                onRemove={this.onRemove}
                 onReaction={this.onReaction}
                 onRemoveFromLikes={this.onRemoveFromLikes}
                 likes={this.state.likes}
@@ -260,6 +264,7 @@ class App extends Component {
 
             <Route exact path="/favourites">
               <Favourites
+                onRemove={this.onRemove}
                 onReaction={this.onReaction}
                 onRemoveFromFavourites={this.onRemoveFromFavourites}
                 favourites={this.state.favourites}
@@ -269,6 +274,7 @@ class App extends Component {
 
             <Route exact path="/dislikes">
               <Dislikes
+                onRemove={this.onRemove}
                 onReaction={this.onReaction}
                 onRemoveFromDislikes={this.onRemoveFromDislikes}
                 allReaction={this.state.allReactions}

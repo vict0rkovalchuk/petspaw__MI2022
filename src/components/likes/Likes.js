@@ -60,8 +60,10 @@ const Likes = props => {
             <div className="hover-appear">
               <div
                 data-name="removeLikes"
+                // data-listtype="likes"
                 data-id={item.id}
                 onClick={e => {
+                  // props.onRemove(e);
                   props.onRemoveFromLikes(e);
                   props.onReaction(e.target);
                 }}
@@ -69,6 +71,7 @@ const Likes = props => {
               >
                 <img
                   data-name="removeFromLikes"
+                  // data-listtype="likes"
                   data-id={item.id}
                   className="img"
                   src={gladSmile}
