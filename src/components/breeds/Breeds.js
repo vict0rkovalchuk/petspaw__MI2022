@@ -69,13 +69,15 @@ const Breeds = () => {
     switch (e.target.dataset.sort) {
       case 'Z_A':
         setBreedsImages(breedsImages =>
-          breedsImages.sort((a, b) => a.name.localeCompare(b.name)).reverse()
+          [...breedsImages]
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .reverse()
         );
 
         break;
       case 'A_Z':
         setBreedsImages(breedsImages =>
-          breedsImages.sort((a, b) => a.name.localeCompare(b.name))
+          [...breedsImages].sort((a, b) => a.name.localeCompare(b.name))
         );
 
         break;
