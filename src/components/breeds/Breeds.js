@@ -201,14 +201,26 @@ const Breeds = () => {
         <div
           data-sort="Z_A"
           onClick={e => onSort(e)}
-          className="breeds__menu-sort breeds__location-sortZ-A"
+          className={
+            breedsImages.length === 0
+              ? 'breeds__menu-sort breeds__location-sortZ-A'
+              : breedsImages[0].breeds
+              ? 'breeds__menu-sort breeds__location-sortZ-A disabled'
+              : 'breeds__menu-sort breeds__location-sortZ-A'
+          }
         >
           <ZASort />
         </div>
         <div
           data-sort="A_Z"
           onClick={e => onSort(e)}
-          className="breeds__menu-sort breeds__location-sortA-Z"
+          className={
+            breedsImages.length === 0
+              ? 'breeds__menu-sort breeds__location-sortA-Z'
+              : breedsImages[0].breeds
+              ? 'breeds__menu-sort breeds__location-sortA-Z disabled'
+              : 'breeds__menu-sort breeds__location-sortA-Z'
+          }
         >
           <AZSort />
         </div>

@@ -55,6 +55,10 @@
           fill: #ff868e;
         }
       }
+      &.disabled {
+        pointer-events: none;
+        opacity: 0.4;
+      }
     }
   }
 }
