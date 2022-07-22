@@ -87,17 +87,21 @@ const BreedInfo = () => {
             {breedInfo.temperament}
           </div>
           <div className="breedinfo__parameters">
-            <div>
-              <span className="bold">Origin:</span> {breedInfo.origin}{' '}
+            <div className="breedinfo__br  breedinfo__origin">
+              <span className="bold">Origin:</span>
+              <span> {breedInfo.origin}</span>
             </div>
-            <div className="breedinfo__parameters-gap">
-              <span className="bold">Weight:</span>{' '}
-              {breedInfo.id ? breedInfo.weight.imperial : null} kgs
+            <div className="breedinfo__br  breedinfo__parameters-gap">
+              <span className="bold">Weight:</span>
+              <span>
+                {' '}
+                {breedInfo.id ? breedInfo.weight.imperial : null} kgs
+              </span>
             </div>
 
-            <div className="breedinfo__parameters-gap">
-              <span className="bold">Life span:</span> {breedInfo.life_span}{' '}
-              years
+            <div className="breedinfo__br  breedinfo__parameters-gap">
+              <span className="bold">Life span:</span>
+              <span> {breedInfo.life_span} years</span>
             </div>
           </div>
         </div>
@@ -113,7 +117,7 @@ const BreedInfo = () => {
           <div onClick={() => history.goBack()} className="location-back">
             <img src={back} alt="back" />
           </div>
-          <div className="location-title">
+          <div className="location-title breedinfo-id">
             <p>BREEDS</p>
           </div>
           <div className="location-id">{breedId}</div>

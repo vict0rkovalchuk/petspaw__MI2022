@@ -2,7 +2,6 @@ import './ModalWindow.scss';
 
 import { Component } from 'react';
 
-import close from '../../icons/close.svg';
 import smallSpinner from '../../icons/small-spinner.png';
 import emptyimage from '../../images/emptyimage.png';
 import trueCheck from '../../icons/true-check-mark.svg';
@@ -175,7 +174,9 @@ class ModalWindow extends Component {
             <div className="modal__status">No file selected</div>
           ) : (
             <div className="modal__status">
-              <div>Image File Name: {this.state.fileName}</div>
+              <div className="image-name">
+                Image File Name: {this.state.fileName}
+              </div>
               {!this.state.isRequestFinished ? (
                 <div
                   onClick={e => {

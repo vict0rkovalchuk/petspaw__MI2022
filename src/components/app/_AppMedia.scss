@@ -1,0 +1,237 @@
+@media (min-width: 768px) and (max-width: 1400px) {
+  .center {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .app__box {
+    width: 680px !important;
+  }
+  .app {
+    &__box {
+      display: none;
+      right: 50% !important;
+      transform: translateX(50%);
+      margin-right: 0 !important;
+    }
+    .block {
+      display: block;
+    }
+    &__image {
+      display: none;
+    }
+    &__menu {
+      position: static !important;
+      margin: 30px 0 30px 0 !important;
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+  .app {
+    &__box {
+      display: none;
+      right: 50% !important;
+      transform: translateX(50%);
+      margin-right: 0 !important;
+    }
+    .block {
+      display: block;
+    }
+    &__image {
+      display: none;
+    }
+    &__menu {
+      display: block;
+      position: static !important;
+      margin: 100px 30px 30px 30px !important;
+    }
+    &__cards-items {
+      flex-direction: column;
+      gap: 20px !important;
+      width: calc(100vw - 60px);
+    }
+    &__card-button {
+      margin-top: 0 !important;
+    }
+  }
+  .app__box {
+    width: 96vw !important;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 206.5px !important;
+    grid-auto-rows: 206.5px !important;
+    &-image {
+      &:nth-child(10n + 1) {
+        grid-column: 1;
+        grid-row: span 1;
+      }
+
+      &:nth-child(10n + 4) {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+
+      &:nth-child(10n + 8) {
+        grid-row: span 1;
+      }
+
+      &:nth-child(10n + 9) {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+    }
+  }
+  .breeds__menu {
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-start !important;
+  }
+  .breeds__menu-limit {
+    width: 60% !important;
+    select {
+      width: 100% !important;
+    }
+  }
+  .breeds__menu-breeds {
+    width: 100% !important;
+    select {
+      width: 100% !important;
+    }
+  }
+  .search {
+    position: relative;
+    display: flex !important;
+    flex-wrap: wrap;
+  }
+  .search__reaction {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+  }
+  .search__input {
+    height: 60px;
+    width: 100%;
+  }
+  .likes {
+    right: 140px;
+  }
+  .favourites {
+    right: 70px;
+  }
+  .dislikes {
+    right: 0;
+  }
+  .voting__image {
+    height: 250px;
+    img {
+      height: 100% !important;
+    }
+  }
+  .history-item-data {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .history-item-descr {
+    margin-top: 10px;
+    margin-left: 0;
+  }
+  .history-item {
+    align-items: flex-start;
+  }
+  .location-id {
+    padding: 5px 10px !important;
+  }
+  .breedinfo-id {
+    padding: 0 18px;
+  }
+  .breedinfo__title {
+    font-size: 20px !important;
+  }
+  .breedinfo__table {
+    padding: 20px !important;
+  }
+  .breedinfo__info {
+    flex-direction: column;
+  }
+  .breedinfo__origin {
+    margin-top: 10px;
+  }
+  .breedinfo__br {
+    display: flex;
+    flex-direction: column;
+  }
+  .gallery__location {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch !important;
+    &-load {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .gallery__selectors {
+    margin-top: 10px !important;
+  }
+  .gallery__selector {
+    flex-direction: column;
+    select {
+      width: 100% !important;
+    }
+    .limit {
+      display: block !important;
+    }
+    &-reload {
+      margin-left: 0 !important;
+      margin-top: 10px;
+      width: 100% !important;
+    }
+  }
+  .grid {
+    margin-top: 10px;
+  }
+  .modal__content {
+    overflow: scroll;
+    background: #f8f8f7;
+    display: block;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    transition: 0.6s all;
+  }
+  .modal__content {
+    border-radius: 0 !important;
+    margin: 0 !important;
+    min-width: 100vw;
+    min-height: 100vh;
+    right: 50% !important;
+    transform: translateX(50%) !important;
+    width: 300px !important;
+  }
+  .modal__field {
+    padding: 10px 20px !important;
+    height: 170px !important;
+    margin-top: 20px !important;
+    width: auto !important;
+    &-empty {
+      width: 100px !important;
+    }
+  }
+  .modal__title {
+    margin-top: 20px !important;
+    font-size: 20px !important;
+    line-height: 29px !important;
+  }
+  .modal__guidelines {
+    font-size: 14px !important;
+    line-height: 30px !important;
+  }
+  .modal__status .image-name {
+    font-size: 15px !important;
+    line-height: 22px !important;
+    text-align: center;
+  }
+}

@@ -11,6 +11,7 @@ import {
 } from 'react-router-dom';
 
 import logo from '../../icons/logo.svg';
+import bigClose from '../../icons/big-close.svg';
 import voting from '../../images/cards/vote-table.png';
 import breeds from '../../images/cards/pet-breeds.png';
 import gallery from '../../images/cards/images-search.png';
@@ -90,51 +91,130 @@ class App extends Component {
     return (
       <Router>
         <div id="app" className="app">
-          <div className="app__menu">
-            <Link to="/" className="app__logo">
+          <div className="menu">
+            <div
+              onClick={() => {
+                document.querySelector('.menu').classList.toggle('menu_active');
+              }}
+              className="close-btn"
+            >
+              <img src={bigClose} alt="close" />
+            </div>
+            <Link to="/" className="logo">
               <img src={logo} alt="petspaw logo" />
             </Link>
 
-            <div className="app__cards">
-              <div className="app__title">Hi intern!</div>
-              <div className="app__greeting">
-                Welcome to MI 2022 Front-end test
-              </div>
-              <div className="app__subtitle">Lets start using The Cat API</div>
-              <div className="app__cards-items">
+            <div className="cards">
+              <div className="title">Hi intern!</div>
+              <div className="greeting">Welcome to MI 2022 Front-end test</div>
+              <div className="subtitle">Lets start using The Cat API</div>
+              <div className="cards-items">
                 <NavLink
+                  onClick={() => {
+                    document
+                      .querySelector('.menu')
+                      .classList.toggle('menu_active');
+                  }}
                   exact
                   activeClassName="activeCard"
                   to="/voting"
-                  className="app__card-item"
+                  className="card-item"
                 >
-                  <div className="app__card-image card-image voting">
+                  <div className="card-image card-image voting">
                     <img src={voting} alt="vote-table" />
                   </div>
-                  <button className="app__card-button card-btn">Voting</button>
+                  <button className="card-button card-btn">Voting</button>
                 </NavLink>
                 <NavLink
+                  onClick={() => {
+                    document
+                      .querySelector('.menu')
+                      .classList.toggle('menu_active');
+                  }}
                   exact
                   activeClassName="activeCard"
                   to="/breeds"
-                  className="app__card-item"
+                  className="card-item"
                 >
-                  <div className="app__card-image card-image breeds">
+                  <div className="card-image card-image breeds">
                     <img src={breeds} alt="vote-table" />
                   </div>
-                  <button className="app__card-button card-btn">BREEDS</button>
+                  <button className="card-button card-btn">BREEDS</button>
                 </NavLink>
                 <NavLink
+                  onClick={() => {
+                    document
+                      .querySelector('.menu')
+                      .classList.toggle('menu_active');
+                  }}
                   exact
                   activeClassName="activeCard"
                   to="/gallery"
-                  className="app__card-item"
+                  className="card-item"
                 >
-                  <div className="app__card-image card-image gallery">
+                  <div className="card-image card-image gallery">
                     <img src={gallery} alt="vote-table" />
                   </div>
-                  <button className="app__card-button card-btn">GALLERY</button>
+                  <button className="card-button card-btn">GALLERY</button>
                 </NavLink>
+              </div>
+            </div>
+          </div>
+          <div className="center">
+            <div className="app__menu">
+              <Link to="/" className="app__logo">
+                <img src={logo} alt="petspaw logo" />
+              </Link>
+
+              <div className="app__cards">
+                <div className="app__title">Hi intern!</div>
+                <div className="app__greeting">
+                  Welcome to MI 2022 Front-end test
+                </div>
+                <div className="app__subtitle">
+                  Lets start using The Cat API
+                </div>
+                <div className="app__cards-items">
+                  <NavLink
+                    exact
+                    activeClassName="activeCard"
+                    to="/voting"
+                    className="app__card-item"
+                  >
+                    <div className="app__card-image card-image voting">
+                      <img src={voting} alt="vote-table" />
+                    </div>
+                    <button className="app__card-button card-btn">
+                      Voting
+                    </button>
+                  </NavLink>
+                  <NavLink
+                    exact
+                    activeClassName="activeCard"
+                    to="/breeds"
+                    className="app__card-item"
+                  >
+                    <div className="app__card-image card-image breeds">
+                      <img src={breeds} alt="vote-table" />
+                    </div>
+                    <button className="app__card-button card-btn">
+                      BREEDS
+                    </button>
+                  </NavLink>
+                  <NavLink
+                    exact
+                    activeClassName="activeCard"
+                    to="/gallery"
+                    className="app__card-item"
+                  >
+                    <div className="app__card-image card-image gallery">
+                      <img src={gallery} alt="vote-table" />
+                    </div>
+                    <button className="app__card-button card-btn">
+                      GALLERY
+                    </button>
+                  </NavLink>
+                </div>
               </div>
             </div>
           </div>
@@ -207,8 +287,8 @@ class App extends Component {
 function View() {
   return (
     <>
-      <div className="app__image app__box"></div>
-      <img src={girlWithPet} alt="girl-and-pet" />
+      <div className="app__box"></div>
+      <img className="app__image" src={girlWithPet} alt="girl-and-pet" />
     </>
   );
 }

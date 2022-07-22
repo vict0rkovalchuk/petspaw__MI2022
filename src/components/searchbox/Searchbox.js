@@ -17,50 +17,62 @@ function Searchbox(props) {
   };
 
   return (
-    <div className="search">
-      <NavLink to="/search" tabIndex={0} className="search__input">
-        <input
-          value={value}
-          onChange={onInputHandler}
-          type="text"
-          placeholder="Search for breeds by name"
-        />
+    <>
+      <div className="search">
         <div
           onClick={() => {
-            props.updateData(value);
+            document.querySelector('.menu').classList.toggle('menu_active');
           }}
-          className="search__dandruff"
+          className="hamburger"
+        >
+          <div className="line"></div>
+          <div className="line"></div>
+          <div className="line"></div>
+        </div>
+        <NavLink to="/search" tabIndex={0} className="search__input">
+          <input
+            value={value}
+            onChange={onInputHandler}
+            type="text"
+            placeholder="Search for breeds by name"
+          />
+          <div
+            onClick={() => {
+              props.updateData(value);
+            }}
+            className="search__dandruff"
+            tabIndex={0}
+          >
+            <img src={dandruff} alt="dandruff" />
+          </div>
+        </NavLink>
+
+        <NavLink
+          activeClassName="activeReaction"
+          to="/likes"
+          className="search__reaction likes"
           tabIndex={0}
         >
-          <img src={dandruff} alt="dandruff" />
-        </div>
-      </NavLink>
-
-      <NavLink
-        activeClassName="activeReaction"
-        to="/likes"
-        className="search__reaction"
-        tabIndex={0}
-      >
-        <GladSmile />
-      </NavLink>
-      <NavLink
-        activeClassName="activeReaction"
-        to="/favourites"
-        className="search__reaction"
-        tabIndex={0}
-      >
-        <Heart />
-      </NavLink>
-      <NavLink
-        activeClassName="activeReaction"
-        to="/dislikes"
-        className="search__reaction"
-        tabIndex={0}
-      >
-        <SadSmile />
-      </NavLink>
-    </div>
+          <GladSmile />
+        </NavLink>
+        <NavLink
+          activeClassName="activeReaction"
+          to="/favourites"
+          className="search__reaction favourites"
+          tabIndex={0}
+        >
+          <Heart />
+        </NavLink>
+        <NavLink
+          activeClassName="activeReaction"
+          to="/dislikes"
+          className="search__reaction dislikes"
+          tabIndex={0}
+        >
+          <SadSmile />
+        </NavLink>
+      </div>
+    </>
   );
 }
 
