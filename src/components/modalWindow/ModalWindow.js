@@ -4,6 +4,7 @@ import { Component } from 'react';
 
 import smallSpinner from '../../icons/small-spinner.png';
 import emptyimage from '../../images/emptyimage.png';
+import emptyimageGray from '../../images/emptyimage-gray.png';
 import trueCheck from '../../icons/true-check-mark.svg';
 import falseCheck from '../../icons/false-check-mark.svg';
 
@@ -147,11 +148,16 @@ class ModalWindow extends Component {
             {!this.state.image ? (
               <>
                 <img
-                  className="modal__field-empty"
+                  className="modal__field-empty white"
                   src={emptyimage}
                   alt="loadimage"
                 />
-                <div style={{ zIndex: 1 }}>
+                <img
+                  className="modal__field-empty gray"
+                  src={emptyimageGray}
+                  alt="loadimage"
+                />
+                <div className="modal__drag" style={{ zIndex: 1 }}>
                   <span className="bold">Drag here </span> your file or{' '}
                   <input onChange={this.getImage} id="file" type="file" />
                   <label className="bold" htmlFor="file">

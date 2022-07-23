@@ -60,10 +60,8 @@ const Favourites = props => {
             <div className="hover-appear">
               <div
                 data-name="removeFavourites"
-                // data-listtype="favourites"
                 data-id={item.id}
                 onClick={e => {
-                  // props.onRemove(e);
                   props.onRemoveFromFavourites(e);
                   props.onReaction(e.target);
                 }}
@@ -71,7 +69,6 @@ const Favourites = props => {
               >
                 <img
                   data-name="removeFromFavourites"
-                  // data-listtype="favourites"
                   data-id={item.id}
                   className="img"
                   src={heart}

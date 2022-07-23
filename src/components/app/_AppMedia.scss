@@ -25,6 +25,10 @@
       margin: 30px 0 30px 0 !important;
     }
   }
+  .theme-switch {
+    top: 30px !important;
+    left: 50%;
+  }
 }
 
 @media (min-width: 320px) and (max-width: 768px) {
@@ -233,5 +237,9 @@
     font-size: 15px !important;
     line-height: 22px !important;
     text-align: center;
+  }
+  .theme-switch {
+    top: 100px !important;
+    right: 30px !important;
   }
 }

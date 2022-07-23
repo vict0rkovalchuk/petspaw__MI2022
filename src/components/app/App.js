@@ -16,6 +16,8 @@ import voting from '../../images/cards/vote-table.png';
 import breeds from '../../images/cards/pet-breeds.png';
 import gallery from '../../images/cards/images-search.png';
 import girlWithPet from '../../images/girl-and-pet-main.png';
+import openEye from '../../icons/open-eye.svg';
+import closedEye from '../../icons/closed-eye.svg';
 
 import Voting from '../voting/Voting';
 import Breeds from '../breeds/Breeds';
@@ -26,13 +28,15 @@ import Dislikes from '../dislikes/Dislikes';
 import Search from '../search/Search';
 import ErrorBoundary from '../errorBoundary/ErrorBoundary';
 import BreedInfo from '../breedInfo/BreedInfo';
+import { ReactComponent as PetsPaw } from '../../icons/pets-paw.svg';
 
 class App extends Component {
   state = {
     likes: [],
     favourites: [],
     dislikes: [],
-    allReactions: []
+    allReactions: [],
+    checked: true
   };
 
   onReaction = target => {
@@ -105,7 +109,38 @@ class App extends Component {
             </div>
             <Link to="/" className="logo">
               <img src={logo} alt="petspaw logo" />
+              <PetsPaw className="logo-title" />
             </Link>
+            <div className="theme-switch">
+              <div className="eye">
+                {this.state.checked ? (
+                  <img src={openEye} alt="opened eye" />
+                ) : (
+                  <img src={closedEye} alt="closed eye" />
+                )}
+              </div>
+              <div className="theme-switch__control">
+                <input
+                  onChange={() => {
+                    this.setState(({ checked }) => {
+                      return { checked: !checked };
+                    });
+                  }}
+                  checked={this.state.checked}
+                  className="theme-switch__toggle"
+                  type="checkbox"
+                  name="theme"
+                  id="theme-switch-toggle"
+                  aria-label="Переключить между тёмной и светлой темой"
+                />
+                <label
+                  aria-hidden="true"
+                  className="theme-switch__track"
+                  htmlFor="theme-switch-toggle"
+                ></label>
+                <div aria-hidden="true" className="theme-switch__marker"></div>
+              </div>
+            </div>
 
             <div className="cards">
               <div className="title">Hi intern!</div>
@@ -167,7 +202,41 @@ class App extends Component {
             <div className="app__menu">
               <Link to="/" className="app__logo">
                 <img src={logo} alt="petspaw logo" />
+                <PetsPaw className="logo-title" />
               </Link>
+              <div className="theme-switch">
+                <div className="eye">
+                  {this.state.checked ? (
+                    <img src={openEye} alt="opened eye" />
+                  ) : (
+                    <img src={closedEye} alt="closed eye" />
+                  )}
+                </div>
+                <div className="theme-switch__control">
+                  <input
+                    onChange={() => {
+                      this.setState(({ checked }) => {
+                        return { checked: !checked };
+                      });
+                    }}
+                    checked={this.state.checked}
+                    className="theme-switch__toggle"
+                    type="checkbox"
+                    name="theme"
+                    id="theme-switch-toggle"
+                    aria-label="Переключить между тёмной и светлой темой"
+                  />
+                  <label
+                    aria-hidden="true"
+                    className="theme-switch__track"
+                    htmlFor="theme-switch-toggle"
+                  ></label>
+                  <div
+                    aria-hidden="true"
+                    className="theme-switch__marker"
+                  ></div>
+                </div>
+              </div>
 
               <div className="app__cards">
                 <div className="app__title">Hi intern!</div>

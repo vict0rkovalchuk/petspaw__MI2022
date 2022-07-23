@@ -1,0 +1,185 @@
+.dark body {
+  background-color: #1d1d1d;
+}
+
+.dark .logo-title svg path,
+.dark .app__logo svg path {
+  fill: #fff;
+}
+
+.dark .app__title {
+  color: #fff;
+}
+
+.dark .app__subtitle {
+  color: #fff;
+}
+
+.dark .app__card-button {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dark .app__box {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark .search__input input {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark .search__dandruff {
+  background: rgba(255, 134, 142, 0.2);
+}
+
+.dark .search__reaction {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark .block {
+  background-color: #1d1d1d;
+}
+
+.dark .block__content {
+  background: #282828;
+}
+
+.dark .location-back {
+  background: rgba(255, 134, 142, 0.2);
+}
+
+.dark .voting__reactions {
+  border: 4px solid #282828;
+}
+
+.dark .history-item {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark .history-item-date {
+  background: #1d1d1d;
+  color: #ffffff;
+}
+
+.dark .history-item-descr span {
+  color: #ffffff;
+}
+
+.dark .breedinfo-id {
+  background: rgba(255, 134, 142, 0.2) !important;
+}
+
+.dark .slick-dots {
+  background: #282828;
+  li {
+    background: rgba(255, 134, 142, 0.2);
+  }
+}
+
+.dark .breedinfo__table {
+  border: 2px solid rgba(255, 134, 142, 0.2);
+}
+
+.dark .breedinfo__title {
+  background: #282828;
+}
+
+.dark .breedinfo__title {
+  color: #ffffff;
+}
+
+.dark .bold {
+  color: #ffffff !important;
+}
+
+.dark .breeds__menu-breeds select,
+.dark .breeds__menu-limit select {
+  background: #333333;
+  &:hover {
+    border: 2px solid rgba(255, 134, 142, 0.2);
+  }
+}
+
+.dark .breeds__menu-sort {
+  background: #333333;
+  &:hover {
+    border: 2px solid rgba(255, 134, 142, 0.2);
+  }
+}
+
+.dark .hover-text {
+  background: #282828;
+}
+
+.dark .gallery__location-load {
+  background: rgba(255, 134, 142, 0.2);
+}
+
+.dark .gallery__selectors {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark .select select {
+  background: #1d1d1d !important;
+  color: #ffffff;
+}
+
+.dark .gallery__selector-reload {
+  background: #1d1d1d;
+}
+
+.dark .hover-img {
+  background: #282828;
+}
+
+.dark .emptybox {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark .modal__content {
+  background: #282828;
+}
+
+.dark .modal__close-img {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark .modal__title {
+  color: #ffffff;
+}
+
+.dark .modal__field {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px dashed rgba(255, 134, 142, 0.2);
+}
+
+.dark .error {
+  background: rgba(255, 134, 142, 0.2) !important;
+}
+
+.dark .modal__message {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark .white {
+  display: none;
+}
+
+.dark .hamburger {
+  background-color: #292929;
+}
+
+.dark .menu {
+  background-color: #1d1d1d;
+}
+
+.dark .close-btn {
+  background-color: #292929;
+}
+
+.dark .card-button {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dark .eye {
+  background: rgba(255, 255, 255, 0.05);
+}

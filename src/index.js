@@ -29,3 +29,9 @@ ReactDOM.render(
 // fetch('https://api.thecatapi.com/v1/breeds/beng')
 //   .then(res => res.json())
 //   .then(data => console.log(data));
+
+document.querySelectorAll('#theme-switch-toggle').forEach(item => {
+  item.addEventListener('click', e => {
+    document.querySelector('html').classList.toggle('dark');
+  });
+});

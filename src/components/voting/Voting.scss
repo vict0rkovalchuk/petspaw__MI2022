@@ -11,7 +11,6 @@
     }
   }
   &__reactions {
-    border: 4px solid #fff;
     display: flex;
     gap: 4px;
     position: absolute;
@@ -29,7 +28,7 @@
       cursor: pointer;
       &.gladsmile {
         background: #97eab9;
-        border-radius: 20px 0 0 20px;
+        border-radius: 15px 0 0 15px;
         &:hover {
           background: rgba(151, 234, 185, 0.3);
           svg path {
@@ -48,7 +47,7 @@
       }
       &.sadsmile {
         background: #ffd280;
-        border-radius: 0 20px 20px 0;
+        border-radius: 0 15px 15px 0;
         &:hover {
           background: rgba(255, 210, 128, 0.3);
           svg path {

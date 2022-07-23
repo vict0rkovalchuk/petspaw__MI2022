@@ -21,7 +21,6 @@
         background-position: right 10px center;
         background-size: 1em;
         &:hover {
-          border: 2px solid #fbe0dc;
           background-position: right 6px center;
         }
       }
@@ -41,7 +40,6 @@
     &-sort {
       width: 40px;
       height: 40px;
-      background: #f8f8f7;
       border-radius: 10px;
       display: flex;
       justify-content: center;
@@ -50,7 +48,6 @@
       cursor: pointer;
 
       &:hover {
-        border: 2px solid #fbe0dc;
         svg path {
           fill: #ff868e;
         }
