@@ -29,6 +29,11 @@
     top: 30px !important;
     left: 50%;
   }
+  .theme-switch-menu {
+    top: 47px !important;
+    left: 50% !important;
+    width: 100px;
+  }
 }
 
 @media (min-width: 320px) and (max-width: 768px) {
@@ -241,5 +246,10 @@
   .theme-switch {
     top: 100px !important;
     right: 30px !important;
+  }
+  .theme-switch-menu {
+    top: 37.5px !important;
+    left: 30px !important;
+    width: 100px;
   }
 }

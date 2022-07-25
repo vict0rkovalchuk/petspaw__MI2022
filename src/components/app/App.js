@@ -111,7 +111,7 @@ class App extends Component {
               <img src={logo} alt="petspaw logo" />
               <PetsPaw className="logo-title" />
             </Link>
-            <div className="theme-switch">
+            <div className="theme-switch theme-switch-menu">
               <div className="eye">
                 {this.state.checked ? (
                   <img src={openEye} alt="opened eye" />
