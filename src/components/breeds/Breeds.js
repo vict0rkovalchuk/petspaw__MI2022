@@ -11,34 +11,31 @@ import ErrorMessage from '../errorMessage/ErrorMessage';
 import { ReactComponent as ZASort } from '../../icons/sort-z-a.svg';
 import { ReactComponent as AZSort } from '../../icons/sort-a-z.svg';
 
-import CatService from '../../services/CatService';
+import useCatService from '../../services/CatService';
 import { Link } from 'react-router-dom';
 
 const Breeds = () => {
   const [breedsList, setBreedsList] = useState([]);
   const [breedsImages, setBreedsImages] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
   const [selectedValue, setSelectedValue] = useState('value2');
   const [selectedBreedValue, setSelectedBreedValue] = useState('value1');
   const [breedId, setBreedId] = useState(null);
   const [limit, setLimit] = useState('10');
 
-  const catService = new CatService();
+  const { loading, error, getAllBreeds, getBreedsImages, getAllCats } =
+    useCatService();
 
   const history = useHistory();
 
   useEffect(() => {
     let isActive = true;
 
-    Promise.all([catService.getAllBreeds(), catService.getBreedsImages()])
-      .then(response => {
-        if (isActive) {
-          onBreedsListLoaded(response[0]);
-          onBreedsImagesLoaded(response[1]);
-        }
-      })
-      .catch(onError);
+    Promise.all([getAllBreeds(), getBreedsImages()]).then(response => {
+      if (isActive) {
+        onBreedsListLoaded(response[0]);
+        onBreedsImagesLoaded(response[1]);
+      }
+    });
 
     return () => {
       isActive = false;
@@ -47,18 +44,10 @@ const Breeds = () => {
 
   const onBreedsListLoaded = list => {
     setBreedsList(list);
-    setLoading(false);
-    setError(false);
   };
 
   const onBreedsImagesLoaded = list => {
     setBreedsImages(list);
-    setLoading(false);
-    setError(false);
-  };
-
-  const onError = () => {
-    setError(true);
   };
 
   const onSort = e => {
@@ -87,10 +76,6 @@ const Breeds = () => {
     }
   };
 
-  const onBreedsImagesLoading = () => {
-    setLoading(true);
-  };
-
   const onSelectValue = e => {
     setSelectedValue(e.target.value);
     const limit = e.target.options[e.target.selectedIndex].dataset.limit;
@@ -107,19 +92,11 @@ const Breeds = () => {
   };
 
   const updateCatsImagesByBreed = (limit, order, types, breedId) => {
-    onBreedsImagesLoading();
-    catService
-      .getAllCats(limit, order, types, breedId)
-      .then(onBreedsImagesLoaded)
-      .catch(onError);
+    getAllCats(limit, order, types, breedId).then(onBreedsImagesLoaded);
   };
 
   const updateBreedsImages = (limit = 10, page = 0) => {
-    onBreedsImagesLoading();
-    catService
-      .getBreedsImages(limit, page)
-      .then(onBreedsImagesLoaded)
-      .catch(onError);
+    getBreedsImages(limit, page).then(onBreedsImagesLoaded);
   };
 
   const errorMessage = error ? <ErrorMessage /> : null;

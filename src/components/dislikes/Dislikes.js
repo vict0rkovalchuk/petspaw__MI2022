@@ -11,14 +11,12 @@ import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import NoItems from '../noItems/NoItems';
 
-import CatService from '../../services/CatService';
+import useCatService from '../../services/CatService';
 
 const Dislikes = props => {
   const [cats, setCats] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
 
-  const catService = new CatService();
+  const { loading, error, getCatById } = useCatService();
 
   const history = useHistory();
 
@@ -28,23 +26,15 @@ const Dislikes = props => {
 
   const onRandomCatLoaded = cat => {
     setCats(cats => [...cats, cat]);
-    setLoading(false);
-    setError(false);
-  };
-
-  const onError = () => {
-    setLoading(false);
-    setError(true);
   };
 
   const updateRandomCat = () => {
     if (props.dislikes.length === 0) {
-      setLoading(false);
       return;
     }
 
     props.dislikes.forEach(item => {
-      catService.getCatById(item).then(onRandomCatLoaded).catch(onError);
+      getCatById(item).then(onRandomCatLoaded);
     });
   };
 

@@ -9,15 +9,13 @@ import Searchbox from '../searchbox/Searchbox';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 
-import CatService from '../../services/CatService';
+import useCatService from '../../services/CatService';
 
 const Search = () => {
   const [queryString, setQueryString] = useState('');
   const [cats, setCats] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
 
-  const catService = new CatService();
+  const { loading, error, getImagesForQuery } = useCatService();
 
   const history = useHistory();
 
@@ -31,25 +29,10 @@ const Search = () => {
 
   const onRandomCatLoaded = list => {
     setCats(list);
-    setLoading(false);
-    setError(false);
-  };
-
-  const onRandomCatLoading = () => {
-    setLoading(true);
-  };
-
-  const onError = () => {
-    setLoading(false);
-    setError(true);
   };
 
   const updateRandomCat = () => {
-    onRandomCatLoading();
-    catService
-      .getImagesForQuery(queryString)
-      .then(onRandomCatLoaded)
-      .catch(onError);
+    getImagesForQuery(queryString).then(onRandomCatLoaded);
   };
 
   const errorMessage = error ? <ErrorMessage /> : null;

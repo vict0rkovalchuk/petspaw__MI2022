@@ -13,13 +13,11 @@ import ModalWindow from '../modalWindow/ModalWindow';
 import { ReactComponent as Reload } from '../../icons/reload.svg';
 import { ReactComponent as Upload } from '../../icons/upload.svg';
 
-import CatService from '../../services/CatService';
+import useCatService from '../../services/CatService';
 
 const Gallery = () => {
   const [breedsList, setBreedsList] = useState([]);
   const [catsImages, setCatsImages] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
   const [selectedLimitValue, setSelectedLimitValue] = useState('value1');
   const [selectedBreedValue, setSelectedBreedValue] = useState('None');
   const [selectedTypeValue, setSelectedTypeValue] = useState('value2');
@@ -30,7 +28,7 @@ const Gallery = () => {
   const [limit, setLimit] = useState(5);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const catService = new CatService();
+  const { loading, error, getAllBreeds, getAllCats } = useCatService();
 
   const history = useHistory();
 
@@ -38,16 +36,14 @@ const Gallery = () => {
     let isActive = true;
 
     Promise.all([
-      catService.getAllBreeds(),
-      catService.getAllCats(limit, order, types, breedId)
-    ])
-      .then(response => {
-        if (isActive) {
-          onBreedsListLoaded(response[0]);
-          onCatImagesLoaded(response[1]);
-        }
-      })
-      .catch(onError);
+      getAllBreeds(),
+      getAllCats(limit, order, types, breedId)
+    ]).then(response => {
+      if (isActive) {
+        onBreedsListLoaded(response[0]);
+        onCatImagesLoaded(response[1]);
+      }
+    });
 
     return () => {
       isActive = false;
@@ -56,23 +52,10 @@ const Gallery = () => {
 
   const onBreedsListLoaded = list => {
     setBreedsList(list);
-    setLoading(false);
-    setError(false);
   };
 
   const onCatImagesLoaded = list => {
     setCatsImages(list);
-    setLoading(false);
-    setError(false);
-  };
-
-  const onError = () => {
-    setLoading(false);
-    setError(true);
-  };
-
-  const onCatsImagesLoading = () => {
-    setLoading(true);
   };
 
   const onSelectLimitValue = e => {
@@ -108,11 +91,7 @@ const Gallery = () => {
   };
 
   const updateCatsImages = (limit, order, types, breedId) => {
-    onCatsImagesLoading();
-    catService
-      .getAllCats(limit, order, types, breedId)
-      .then(onCatImagesLoaded)
-      .catch(onError);
+    getAllCats(limit, order, types, breedId).then(onCatImagesLoaded);
   };
 
   const errorMessage = error ? <ErrorMessage /> : null;

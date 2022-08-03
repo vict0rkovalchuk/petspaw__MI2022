@@ -13,15 +13,13 @@ import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import Skeleton from '../skeleton/Skeleton';
 
-import CatService from '../../services/CatService';
+import useCatService from '../../services/CatService';
 import { v4 as uuidv4 } from 'uuid';
 
 const Voting = ({ onReaction, allReaction }) => {
   const [cat, setCat] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
 
-  const catService = new CatService();
+  const { loading, error, getRandomCat } = useCatService();
 
   let history = useHistory();
 
@@ -31,22 +29,10 @@ const Voting = ({ onReaction, allReaction }) => {
 
   const onRandomCatLoaded = cat => {
     setCat(cat);
-    setLoading(false);
-    setError(false);
-  };
-
-  const onRandomCatLoading = () => {
-    setLoading(true);
-  };
-
-  const onError = () => {
-    setLoading(false);
-    setError(true);
   };
 
   const updateRandomCat = () => {
-    onRandomCatLoading();
-    catService.getRandomCat().then(onRandomCatLoaded).catch(onError);
+    getRandomCat().then(onRandomCatLoaded);
   };
 
   const errorMessage = error ? <ErrorMessage /> : null;

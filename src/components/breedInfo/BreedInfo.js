@@ -9,48 +9,35 @@ import { useParams, useHistory } from 'react-router-dom';
 import Slider from 'react-slick';
 
 import Searchbox from '../searchbox/Searchbox';
-import CatService from '../../services/CatService';
+import useCatService from '../../services/CatService';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import Spinner from '../spinner/Spinner';
 
 const BreedInfo = () => {
   const [breedInfo, setBreedInfo] = useState({});
   const [catsImages, setCatsImages] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
 
-  const catService = new CatService();
+  const { loading, error, getBreedById, getAllCats } = useCatService();
 
   const history = useHistory();
   const { breedId } = useParams();
 
   useEffect(() => {
     Promise.all([
-      catService.getBreedById(breedId),
-      catService.getAllCats(5, 'RANDOM', 'jpg,png', breedId)
-    ])
-      .then(response => {
-        onBreedsListLoaded(response[0]);
-        onCatImagesLoaded(response[1]);
-      })
-      .catch(onError);
+      getBreedById(breedId),
+      getAllCats(5, 'RANDOM', 'jpg,png', breedId)
+    ]).then(response => {
+      onBreedsListLoaded(response[0]);
+      onCatImagesLoaded(response[1]);
+    });
   }, []);
 
   const onBreedsListLoaded = data => {
     setBreedInfo(data);
-    setLoading(false);
-    setError(false);
   };
 
   const onCatImagesLoaded = list => {
     setCatsImages(list);
-    setLoading(false);
-    setError(false);
-  };
-
-  const onError = () => {
-    setLoading(false);
-    setError(true);
   };
 
   const settings = {
