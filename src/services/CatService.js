@@ -1,7 +1,7 @@
 import { useHttp } from '../hooks/http.hook';
 
 const useCatService = () => {
-  const { loading, request, error } = useHttp();
+  const { loading, request, error, clearError } = useHttp();
 
   const _apiBase = 'https://api.thecatapi.com/v1/';
 
@@ -81,7 +81,8 @@ const useCatService = () => {
     getBreedsImages,
     getRandomCat,
     getCatById,
-    getImagesForQuery
+    getImagesForQuery,
+    clearError
   };
 };
 

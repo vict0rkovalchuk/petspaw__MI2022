@@ -1,6 +1,6 @@
 import './Voting.scss';
 
-import { Component, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import back from '../../icons/left.svg';
@@ -19,7 +19,7 @@ import { v4 as uuidv4 } from 'uuid';
 const Voting = ({ onReaction, allReaction }) => {
   const [cat, setCat] = useState({});
 
-  const { loading, error, getRandomCat } = useCatService();
+  const { loading, error, getRandomCat, clearError } = useCatService();
 
   let history = useHistory();
 
@@ -32,6 +32,7 @@ const Voting = ({ onReaction, allReaction }) => {
   };
 
   const updateRandomCat = () => {
+    clearError();
     getRandomCat().then(onRandomCatLoaded);
   };
 
