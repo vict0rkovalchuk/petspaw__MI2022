@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/petspaw__MI2022/static/css/main.ea7be86d.css",
-    "main.js": "/petspaw__MI2022/static/js/main.becc814f.js",
+    "main.js": "/petspaw__MI2022/static/js/main.41dbd81e.js",
     "static/media/error.gif": "/petspaw__MI2022/static/media/error.1be1708dc51eb6942369.gif",
     "static/media/girl-and-pet-main.png": "/petspaw__MI2022/static/media/girl-and-pet-main.1927e13f60069098098c.png",
     "static/media/images-search.png": "/petspaw__MI2022/static/media/images-search.60d7c8a49dbcbe53815f.png",
@@ -35,10 +35,10 @@
     "static/media/big-close.svg": "/petspaw__MI2022/static/media/big-close.dd314bb6396f4801da62ec937453fd03.svg",
     "static/media/upload.svg": "/petspaw__MI2022/static/media/upload.897ccd92c7846e3c1bff6d879888bacf.svg",
     "main.ea7be86d.css.map": "/petspaw__MI2022/static/css/main.ea7be86d.css.map",
-    "main.becc814f.js.map": "/petspaw__MI2022/static/js/main.becc814f.js.map"
+    "main.41dbd81e.js.map": "/petspaw__MI2022/static/js/main.41dbd81e.js.map"
   },
   "entrypoints": [
     "static/css/main.ea7be86d.css",
-    "static/js/main.becc814f.js"
+    "static/js/main.41dbd81e.js"
   ]
 }
